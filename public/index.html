@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verkjadagbók</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Verkjadagbók">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4eee3">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14100c">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>
+:root{
+  --page:#f4eee3;
+  --surface:#fbf8f1;
+  --surface-2:#f0e9db;
+  --ink:#231c14;
+  --ink-2:#6d6252;
+  --ink-3:#9b8f7d;
+  --hairline:#e2d9c8;
+  --hairline-2:#d5cab5;
+  --accent:#b4552d;
+  --accent-ink:#fff6ee;
+  --accent-soft:rgba(180,85,45,.10);
+  --good:#3e7d3e;
+  --bad:#c04a3a;
+  --shadow:0 1px 2px rgba(60,45,25,.05),0 8px 28px rgba(60,45,25,.08);
+  --s1:#2a78d6; --s2:#1baf7a; --s3:#eda100; --s4:#008300;
+  --s5:#4a3aa7; --s6:#eb6834;
+  --grid:#e6ddcb;
+  --radius:20px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --page:#14100c;
+    --surface:#1c1712;
+    --surface-2:#251f18;
+    --ink:#f2ebdf;
+    --ink-2:#a89b88;
+    --ink-3:#7d7263;
+    --hairline:#2e271e;
+    --hairline-2:#3a3226;
+    --accent:#d8744a;
+    --accent-ink:#fff6ee;
+    --accent-soft:rgba(216,116,74,.14);
+    --good:#5aa85a;
+    --bad:#e07060;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px rgba(0,0,0,.35);
+    --s1:#3987e5; --s2:#199e70; --s3:#c98500; --s4:#3fa33f;
+    --s5:#9085e9; --s6:#d95926;
+    --grid:#2c251c;
+  }
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:17px}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  background:var(--page);
+  background-image:radial-gradient(ellipse 120% 60% at 50% -10%, var(--accent-soft), transparent 60%);
+  background-repeat:no-repeat;
+  color:var(--ink);
+  min-height:100dvh;
+  touch-action:manipulation;
+  -webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:none;
+}
+.wrap{max-width:600px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top)) 18px calc(110px + env(safe-area-inset-bottom))}
+
+/* ---------- header ---------- */
+header{padding:14px 2px 20px;animation:rise .5s .02s both;position:relative}
+.date-line{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+h1{
+  font-family:ui-serif,"New York","Iowan Old Style",Georgia,"Times New Roman",serif;
+  font-weight:600;font-size:2.1rem;letter-spacing:-.01em;line-height:1.05;
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+}
+.streak{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-size:.78rem;font-weight:600;color:var(--accent);
+  background:var(--accent-soft);border-radius:999px;padding:5px 12px;
+  letter-spacing:.02em;white-space:nowrap;transform:translateY(-4px);
+}
+#cloudBtn{
+  position:absolute;right:0;top:14px;border:0;background:transparent;cursor:pointer;
+  padding:9px;border-radius:12px;color:var(--ink-3);
+}
+#cloudBtn svg{width:23px;height:23px;display:block}
+#cloudBtn.syncing{animation:pulse 1.1s infinite}
+#cloudBtn.offline{opacity:.55}
+#cloudBtn.noauth{color:var(--accent);background:var(--accent-soft)}
+@keyframes pulse{50%{opacity:.35}}
+
+/* ---------- cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--hairline);
+  border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:20px;margin-bottom:16px;
+}
+.card h2{
+  font-family:ui-serif,"New York","Iowan Old Style",Georgia,serif;
+  font-weight:600;font-size:1.22rem;letter-spacing:-.005em;margin-bottom:2px;
+}
+.card .sub{font-size:.8rem;color:var(--ink-3);margin-bottom:14px}
+
+/* ---------- segmented control ---------- */
+.seg{
+  display:flex;background:var(--surface-2);border:1px solid var(--hairline);
+  border-radius:999px;padding:4px;margin-bottom:18px;position:relative;
+  animation:rise .5s .06s both;
+}
+.seg button{
+  flex:1;border:0;background:transparent;color:var(--ink-2);
+  font:inherit;font-size:.95rem;font-weight:600;padding:12px 0;border-radius:999px;
+  cursor:pointer;transition:color .25s;position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.seg button svg{width:17px;height:17px;flex:none}
+.seg .pill{
+  position:absolute;top:4px;bottom:4px;width:calc(50% - 4px);left:4px;
+  background:var(--surface);border-radius:999px;box-shadow:0 1px 4px rgba(60,45,25,.14);
+  border:1px solid var(--hairline);
+  transition:transform .3s cubic-bezier(.3,1.3,.4,1);
+}
+.seg.k .pill{transform:translateX(100%)}
+.seg button[aria-pressed="true"]{color:var(--ink)}
+
+/* ---------- edit banner ---------- */
+.edit-banner{
+  display:none;align-items:center;justify-content:space-between;gap:10px;
+  background:var(--accent-soft);border:1px solid var(--accent);border-radius:14px;
+  padding:12px 16px;margin-bottom:14px;font-size:.9rem;color:var(--ink);
+}
+.edit-banner.show{display:flex}
+.edit-banner b{color:var(--accent)}
+.edit-banner button{
+  border:0;background:transparent;color:var(--accent);font:inherit;font-size:.85rem;
+  font-weight:700;cursor:pointer;padding:4px;white-space:nowrap;
+}
+
+/* ---------- sliders ---------- */
+.srow{padding:10px 0 14px}
+.srow + .srow{border-top:1px solid var(--hairline)}
+.srow .top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
+.srow label{font-size:.98rem;font-weight:550;color:var(--ink)}
+.srow .val{
+  font-family:ui-serif,"New York",Georgia,serif;
+  font-size:1.7rem;font-weight:600;line-height:1;
+  font-variant-numeric:tabular-nums;min-width:1.4em;text-align:right;
+  transition:color .2s;
+}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:34px;background:transparent;
+  cursor:pointer;display:block;
+}
+input[type=range]:focus{outline:none}
+input[type=range]::-webkit-slider-runnable-track{
+  height:10px;border-radius:999px;
+  background:var(--track,var(--surface-2));
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:30px;height:30px;border-radius:50%;margin-top:-10px;
+  background:var(--surface);border:2.5px solid var(--thumb,var(--ink-3));
+  box-shadow:0 2px 6px rgba(50,35,20,.25);
+  transition:transform .15s;
+}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.18)}
+input[type=range]::-moz-range-track{height:10px;border-radius:999px;background:var(--track,var(--surface-2))}
+input[type=range]::-moz-range-thumb{
+  width:26px;height:26px;border-radius:50%;
+  background:var(--surface);border:2.5px solid var(--thumb,var(--ink-3));
+  box-shadow:0 2px 6px rgba(50,35,20,.25);
+}
+.ends{display:flex;justify-content:space-between;font-size:.72rem;color:var(--ink-3);margin-top:2px}
+
+/* ---------- note ---------- */
+textarea{
+  width:100%;border:1px solid var(--hairline);border-radius:14px;
+  background:var(--surface-2);color:var(--ink);font:inherit;font-size:.95rem;
+  padding:13px 15px;resize:none;min-height:52px;line-height:1.45;
+}
+textarea:focus{outline:none;border-color:var(--accent)}
+textarea::placeholder{color:var(--ink-3)}
+
+/* ---------- save ---------- */
+.savebar{margin-top:4px;animation:rise .5s .18s both}
+#saveBtn{
+  width:100%;border:0;border-radius:18px;padding:18px;
+  background:var(--accent);color:var(--accent-ink);
+  font:inherit;font-size:1.08rem;font-weight:700;letter-spacing:.01em;
+  cursor:pointer;box-shadow:0 6px 20px rgba(180,85,45,.35);
+  transition:transform .15s,background .3s,box-shadow .3s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+#saveBtn:active{transform:scale(.975)}
+#saveBtn.saved{background:var(--good);box-shadow:0 6px 20px rgba(62,125,62,.3)}
+#saveBtn svg{width:20px;height:20px}
+.saved-note{text-align:center;font-size:.8rem;color:var(--ink-3);margin-top:10px;min-height:1.1em}
+
+/* ---------- chips / filters ---------- */
+.chips{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.chip{
+  border:1px solid var(--hairline-2);background:var(--surface);color:var(--ink-2);
+  font:inherit;font-size:.83rem;font-weight:600;padding:8px 15px;border-radius:999px;
+  cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--page)}
+
+/* ---------- stat tiles ---------- */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.tile{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:16px 18px;
+}
+.tile .t-label{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.tile .t-val{
+  font-family:ui-serif,"New York",Georgia,serif;font-size:2.2rem;font-weight:600;line-height:1;
+}
+.tile .t-delta{font-size:.8rem;font-weight:650;margin-top:8px;display:flex;align-items:center;gap:4px}
+.t-delta.up-good{color:var(--good)} .t-delta.down-good{color:var(--good)}
+.t-delta.up-bad{color:var(--bad)} .t-delta.down-bad{color:var(--bad)}
+.t-delta.flat{color:var(--ink-3)}
+
+/* ---------- charts ---------- */
+.legend{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 10px}
+.lg{
+  display:flex;align-items:center;gap:7px;border:1px solid var(--hairline);
+  background:transparent;border-radius:999px;padding:6px 12px;font:inherit;
+  font-size:.78rem;font-weight:600;color:var(--ink-2);cursor:pointer;transition:opacity .2s;
+}
+.lg .dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none;transition:all .2s}
+.lg.off{opacity:.42}
+.lg.off .dot{background:transparent;box-shadow:inset 0 0 0 2px var(--c)}
+.chartbox{position:relative;margin:0 -6px}
+.chartbox svg{display:block;width:100%;height:auto}
+.tip{
+  position:absolute;pointer-events:none;background:var(--ink);color:var(--page);
+  border-radius:12px;padding:9px 12px;font-size:.76rem;line-height:1.5;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);opacity:0;transition:opacity .12s;
+  min-width:130px;z-index:5;
+}
+.tip .td{font-weight:700;margin-bottom:3px;opacity:.75;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase}
+.tip .tr{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tip .tr .dot{width:7px;height:7px;border-radius:50%;flex:none}
+.tip .tr b{margin-left:auto;font-variant-numeric:tabular-nums;padding-left:12px}
+
+/* ---------- empty state ---------- */
+.empty{
+  text-align:center;padding:52px 24px;animation:rise .5s both;
+}
+.empty .art{font-size:0;margin-bottom:18px}
+.empty .art svg{width:88px;height:88px}
+.empty h3{font-family:ui-serif,"New York",Georgia,serif;font-size:1.35rem;font-weight:600;margin-bottom:8px}
+.empty p{font-size:.92rem;color:var(--ink-2);max-width:300px;margin:0 auto 22px;line-height:1.5}
+.empty button{
+  border:0;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;
+  font-size:.95rem;padding:13px 26px;border-radius:999px;cursor:pointer;
+}
+
+/* ---------- history ---------- */
+.day-group{margin-bottom:18px;animation:rise .4s both}
+.day-h{
+  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);
+  margin:0 4px 8px;font-weight:650;
+}
+.entry{
+  display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+  background:var(--surface);border:1px solid var(--hairline);border-radius:16px;
+  box-shadow:var(--shadow);padding:14px 16px;margin-bottom:8px;cursor:pointer;
+  font:inherit;color:var(--ink);transition:transform .12s;
+}
+.entry:active{transform:scale(.985)}
+.entry .e-ico{
+  width:38px;height:38px;border-radius:12px;background:var(--surface-2);
+  display:flex;align-items:center;justify-content:center;flex:none;color:var(--accent);
+}
+.entry .e-ico svg{width:19px;height:19px}
+.entry .e-mid{flex:1;min-width:0}
+.entry .e-t{display:block;font-weight:650;font-size:.95rem}
+.entry .e-s{display:block;font-size:.8rem;color:var(--ink-2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.entry .e-del{
+  border:0;background:transparent;color:var(--ink-3);cursor:pointer;padding:9px;
+  border-radius:10px;flex:none;display:flex;
+}
+.entry .e-del:active{color:var(--bad)}
+.entry .e-del svg{width:17px;height:17px}
+.data-actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.data-actions .chip{flex:1;text-align:center;padding:12px}
+.sync-line{font-size:.78rem;color:var(--ink-3);text-align:center;margin-top:14px;min-height:1.1em}
+
+/* ---------- bottom nav ---------- */
+nav{
+  position:fixed;left:50%;transform:translateX(-50%);
+  bottom:calc(14px + env(safe-area-inset-bottom));
+  display:flex;gap:2px;background:var(--surface);
+  border:1px solid var(--hairline);border-radius:999px;padding:5px;
+  box-shadow:0 4px 24px rgba(40,28,14,.18);z-index:50;
+}
+nav button{
+  border:0;background:transparent;color:var(--ink-2);font:inherit;
+  font-size:.82rem;font-weight:650;padding:11px 20px;border-radius:999px;
+  cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s;
+}
+nav button svg{width:17px;height:17px;flex:none}
+nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
+@media (max-width:420px){
+  nav button{padding:11px 16px;font-size:.79rem}
+}
+
+/* ---------- toast ---------- */
+#toast{
+  position:fixed;left:50%;transform:translateX(-50%) translateY(16px);
+  bottom:calc(84px + env(safe-area-inset-bottom));
+  background:var(--ink);color:var(--page);font-size:.85rem;font-weight:650;
+  border-radius:999px;padding:11px 20px;opacity:0;pointer-events:none;
+  transition:all .3s cubic-bezier(.3,1.2,.4,1);z-index:60;box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------- modal ---------- */
+#modal{
+  position:fixed;inset:0;background:rgba(20,14,8,.5);
+  display:none;align-items:center;justify-content:center;z-index:100;padding:20px;
+}
+#modal.show{display:flex}
+.modal-card{
+  background:var(--surface);border:1px solid var(--hairline);border-radius:22px;
+  box-shadow:var(--shadow);padding:26px 24px;max-width:390px;width:100%;
+  animation:rise .3s both;
+}
+.modal-card h2{
+  font-family:ui-serif,"New York",Georgia,serif;font-weight:600;font-size:1.3rem;margin-bottom:8px;
+}
+.modal-card p{font-size:.88rem;color:var(--ink-2);line-height:1.55;margin-bottom:16px}
+.modal-card input{
+  width:100%;border:1px solid var(--hairline-2);border-radius:12px;
+  background:var(--surface-2);color:var(--ink);font:inherit;font-size:1rem;
+  padding:13px 15px;margin-bottom:16px;letter-spacing:.03em;
+}
+.modal-card input:focus{outline:none;border-color:var(--accent)}
+.modal-actions{display:flex;gap:10px}
+.btn-primary{
+  flex:1.4;border:0;border-radius:12px;padding:13px;background:var(--accent);
+  color:var(--accent-ink);font:inherit;font-weight:700;cursor:pointer;
+}
+.btn-ghost{
+  flex:1;border:1px solid var(--hairline-2);background:transparent;border-radius:12px;
+  padding:13px;color:var(--ink-2);font:inherit;font-weight:600;cursor:pointer;
+}
+
+.view{display:none}
+.view.active{display:block}
+.a1{animation:rise .5s .04s both}
+.a2{animation:rise .5s .1s both}
+.a3{animation:rise .5s .16s both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="date-line" id="dateLine"></div>
+    <h1>Verkjadagbók <span class="streak" id="streak" hidden></span></h1>
+    <button id="cloudBtn" type="button" aria-label="Samstilling"></button>
+  </header>
+
+  <!-- ============ SKRÁ ============ -->
+  <section class="view active" id="view-log">
+    <div class="edit-banner" id="editBanner">
+      <span id="editBannerText"></span>
+      <button id="editCancel" type="button">Hætta við</button>
+    </div>
+
+    <div class="seg" id="periodSeg">
+      <div class="pill"></div>
+      <button type="button" data-p="m" aria-pressed="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        Morgunn</button>
+      <button type="button" data-p="k" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        Kvöld</button>
+    </div>
+
+    <div class="card a1">
+      <h2>Verkir</h2>
+      <div class="sub">0 = enginn verkur &nbsp;·&nbsp; 10 = óbærilegur</div>
+      <div id="painSliders"></div>
+    </div>
+
+    <div class="card a2">
+      <h2>Líðan</h2>
+      <div class="sub">0 = mjög slæm &nbsp;·&nbsp; 10 = frábær</div>
+      <div id="moodSliders"></div>
+    </div>
+
+    <div class="card a3">
+      <h2>Athugasemd</h2>
+      <div class="sub">Valfrjálst — svefn, lyf, hreyfing…</div>
+      <textarea id="note" rows="2" placeholder="Skrifaðu hér…"></textarea>
+    </div>
+
+    <div class="savebar">
+      <button id="saveBtn" type="button"><span id="saveLabel">Vista skráningu</span></button>
+      <div class="saved-note" id="savedNote"></div>
+    </div>
+  </section>
+
+  <!-- ============ FRAMVINDA ============ -->
+  <section class="view" id="view-charts">
+    <div id="chartsEmpty" class="empty" hidden>
+      <div class="art">
+        <svg viewBox="0 0 96 96" fill="none"><circle cx="48" cy="42" r="20" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/><path d="M16 72c8-10 18 4 28-6s16 2 24-4 12 2 12 2" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Engin gögn ennþá</h3>
+      <p>Skráðu líðan þína kvölds og morgna — línuritin birtast hér um leið og fyrsta skráningin er komin.</p>
+      <button type="button" id="goLog">Skrá núna</button>
+    </div>
+
+    <div id="chartsBody">
+      <div class="chips a1" id="rangeChips">
+        <button class="chip" data-r="7" aria-pressed="true">7 dagar</button>
+        <button class="chip" data-r="30" aria-pressed="false">30 dagar</button>
+        <button class="chip" data-r="90" aria-pressed="false">90 dagar</button>
+        <button class="chip" data-r="0" aria-pressed="false">Allt</button>
+      </div>
+      <div class="chips a1" id="modeChips">
+        <button class="chip" data-m="avg" aria-pressed="true">Meðaltal dags</button>
+        <button class="chip" data-m="m" aria-pressed="false">Morgnar</button>
+        <button class="chip" data-m="k" aria-pressed="false">Kvöld</button>
+      </div>
+
+      <div class="tiles a2">
+        <div class="tile">
+          <div class="t-label">Verkir · 7 daga meðaltal</div>
+          <div class="t-val" id="tilePain">–</div>
+          <div class="t-delta" id="tilePainDelta"></div>
+        </div>
+        <div class="tile">
+          <div class="t-label">Líðan · 7 daga meðaltal</div>
+          <div class="t-val" id="tileMood">–</div>
+          <div class="t-delta" id="tileMoodDelta"></div>
+        </div>
+      </div>
+
+      <div class="card a2">
+        <h2>Verkir</h2>
+        <div class="sub">Smelltu á staði til að fela/sýna línur</div>
+        <div class="legend" id="painLegend"></div>
+        <div class="chartbox" id="painChart"></div>
+      </div>
+
+      <div class="card a3">
+        <h2>Líðan</h2>
+        <div class="sub">Andleg og líkamleg líðan — hærra er betra</div>
+        <div class="legend" id="moodLegend"></div>
+        <div class="chartbox" id="moodChart"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SAGA ============ -->
+  <section class="view" id="view-history">
+    <div id="histEmpty" class="empty" hidden>
+      <div class="art">
+        <svg viewBox="0 0 96 96" fill="none"><rect x="24" y="16" width="48" height="64" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2.5"/><path d="M36 36h24M36 48h24M36 60h14" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Sagan er tóm</h3>
+      <p>Hér birtast allar skráningar. Þú getur breytt þeim eða eytt hvenær sem er.</p>
+      <button type="button" id="goLog2">Skrá núna</button>
+    </div>
+    <div id="histList"></div>
+    <div class="data-actions" id="dataActions">
+      <button class="chip" type="button" id="expJson">Flytja út (JSON)</button>
+      <button class="chip" type="button" id="expCsv">Flytja út (CSV)</button>
+      <button class="chip" type="button" id="impBtn">Flytja inn</button>
+      <input type="file" id="impFile" accept=".json,application/json" hidden>
+    </div>
+    <div class="sync-line" id="syncLine"></div>
+  </section>
+</div>
+
+<nav>
+  <button type="button" data-v="log" aria-pressed="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+    Skrá</button>
+  <button type="button" data-v="charts" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>
+    Framvinda</button>
+  <button type="button" data-v="history" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+    Saga</button>
+</nav>
+
+<div id="toast"></div>
+
+<div id="modal">
+  <div class="modal-card">
+    <h2>Samstilling milli tækja</h2>
+    <p>Sláðu inn samstillingarlykilinn þinn til að tengja þetta tæki. Skráningarnar samstillast þá sjálfkrafa milli tölvu og síma.</p>
+    <input type="text" id="keyInput" placeholder="t.d. abcd-efgh-jkmn" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <div class="modal-actions">
+      <button class="btn-ghost" type="button" id="keyCancel">Seinna</button>
+      <button class="btn-primary" type="button" id="keySave">Tengja</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* ================= data ================= */
+const KEY = "verkjadagbok.v1";
+const SYNC_KEY_LS = "verkjadagbok.synckey";
+const PAIN_FIELDS = [
+  {k:"hf", label:"Hægri fótur",    color:"var(--s1)"},
+  {k:"vf", label:"Vinstri fótur",  color:"var(--s2)"},
+  {k:"hb", label:"Hægra mjóbak",   color:"var(--s3)"},
+  {k:"vb", label:"Vinstra mjóbak", color:"var(--s4)"},
+];
+const MOOD_FIELDS = [
+  {k:"al", label:"Andleg líðan",   color:"var(--s5)"},
+  {k:"ll", label:"Líkamleg líðan", color:"var(--s6)"},
+];
+const ALL_FIELDS = PAIN_FIELDS.concat(MOOD_FIELDS);
+const DAYS = ["sunnudagur","mánudagur","þriðjudagur","miðvikudagur","fimmtudagur","föstudagur","laugardagur"];
+const DAYS_S = ["sun","mán","þri","mið","fim","fös","lau"];
+const MON = ["janúar","febrúar","mars","apríl","maí","júní","júlí","ágúst","september","október","nóvember","desember"];
+const MON_S = ["jan","feb","mar","apr","maí","jún","júl","ágú","sep","okt","nóv","des"];
+
+let db = load();
+function load(){
+  try{
+    const d = JSON.parse(localStorage.getItem(KEY));
+    if(d && d.entries) return {entries:d.entries, deleted:d.deleted || {}};
+  }catch(e){}
+  return {entries:{}, deleted:{}};
+}
+function persist(){ localStorage.setItem(KEY, JSON.stringify(db)); }
+function eKey(d,p){ return d+"|"+p; }
+
+function todayIso(){
+  const n = new Date();
+  return n.getFullYear()+"-"+String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0");
+}
+function isoToDate(iso){ const [y,m,d] = iso.split("-").map(Number); return new Date(y, m-1, d); }
+function addDays(iso, n){ const d = isoToDate(iso); d.setDate(d.getDate()+n);
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function fmtLong(iso){ const d = isoToDate(iso); return DAYS[d.getDay()]+", "+d.getDate()+". "+MON[d.getMonth()]; }
+function fmtShort(iso){ const d = isoToDate(iso); return DAYS_S[d.getDay()]+" "+d.getDate()+". "+MON_S[d.getMonth()]; }
+function fmtTick(iso){ const d = isoToDate(iso); return d.getDate()+". "+MON_S[d.getMonth()]; }
+function fmtNum(v){ return v.toFixed(1).replace(".", ","); }
+
+/* ================= state ================= */
+const state = {
+  view: "log",
+  period: (new Date().getHours() < 15) ? "m" : "k",
+  editDate: null,           // null = today
+  range: 7,
+  mode: "avg",
+  hidden: new Set(),
+};
+
+/* ================= sync ================= */
+const CLOUD_ICONS = {
+  ok:      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H7a5 5 0 1 1 .9-9.92A6 6 0 0 1 19.6 11.2 4 4 0 0 1 17.5 19Z"/><path d="M9.5 13.5l2 2 3.5-3.5"/></svg>',
+  syncing: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H7a5 5 0 1 1 .9-9.92A6 6 0 0 1 19.6 11.2 4 4 0 0 1 17.5 19Z"/></svg>',
+  offline: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H7a5 5 0 1 1 .9-9.92A6 6 0 0 1 19.6 11.2 4 4 0 0 1 17.5 19Z"/><path d="M4 4l16 16"/></svg>',
+  noauth:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H7a5 5 0 1 1 .9-9.92A6 6 0 0 1 19.6 11.2 4 4 0 0 1 17.5 19Z"/><path d="M12 10v3M12 16v.01"/></svg>',
+};
+const SYNC_TEXT = {
+  ok: "Samstillt ✓",
+  syncing: "Samstilli…",
+  offline: "Ótengt — gögn vistuð á þessu tæki",
+  noauth: "Vantar samstillingarlykil — smelltu á skýið efst",
+};
+let syncState = "offline";
+let lastSync = null;
+
+function getSyncKeyStored(){ return localStorage.getItem(SYNC_KEY_LS) || ""; }
+
+function setSyncStatus(s){
+  syncState = s;
+  if(s === "ok") lastSync = new Date();
+  const btn = document.getElementById("cloudBtn");
+  btn.className = s;
+  btn.innerHTML = CLOUD_ICONS[s];
+  btn.setAttribute("aria-label", "Samstilling: "+SYNC_TEXT[s]);
+  const line = document.getElementById("syncLine");
+  if(line){
+    let txt = SYNC_TEXT[s];
+    if(s === "ok" && lastSync)
+      txt += " kl. "+String(lastSync.getHours()).padStart(2,"0")+":"+String(lastSync.getMinutes()).padStart(2,"0");
+    line.textContent = txt;
+  }
+}
+
+// merge two dbs: newer ts wins per entry; tombstones remove older entries
+function mergeDb(a, b){
+  const entries = Object.assign({}, a.entries);
+  const deleted = Object.assign({}, a.deleted);
+  for(const k in (b.deleted || {})){
+    deleted[k] = Math.max(deleted[k] || 0, b.deleted[k]);
+  }
+  for(const k in (b.entries || {})){
+    const e = b.entries[k];
+    if(!e || !e.d || !e.p) continue;
+    if(!entries[k] || (e.ts||0) > (entries[k].ts||0)) entries[k] = e;
+  }
+  for(const k in deleted){
+    if(entries[k]){
+      if((entries[k].ts||0) <= deleted[k]) delete entries[k];
+      else delete deleted[k];
+    }
+  }
+  return {entries, deleted};
+}
+
+let syncTimer = null, syncBusy = false, syncQueued = false;
+function scheduleSync(){ clearTimeout(syncTimer); syncTimer = setTimeout(syncNow, 500); }
+
+async function syncNow(){
+  const key = getSyncKeyStored();
+  if(!key){ setSyncStatus("noauth"); return; }
+  if(syncBusy){ syncQueued = true; return; }
+  syncBusy = true;
+  setSyncStatus("syncing");
+  try{
+    const res = await fetch("/api/sync", {
+      method: "POST",
+      headers: {"content-type":"application/json", "x-sync-key": key},
+      body: JSON.stringify(db),
+    });
+    if(res.status === 401){ setSyncStatus("noauth"); return; }
+    if(!res.ok) throw new Error("http "+res.status);
+    const server = await res.json();
+    db = mergeDb(db, server);
+    persist();
+    setSyncStatus("ok");
+    renderHeader();
+    if(state.view === "charts") renderCharts();
+    if(state.view === "history") renderHistory();
+  }catch(e){
+    setSyncStatus("offline");
+  }finally{
+    syncBusy = false;
+    if(syncQueued){ syncQueued = false; scheduleSync(); }
+  }
+}
+
+// modal
+function openKeyModal(){
+  document.getElementById("keyInput").value = getSyncKeyStored();
+  document.getElementById("modal").classList.add("show");
+  setTimeout(() => document.getElementById("keyInput").focus(), 50);
+}
+function closeKeyModal(){ document.getElementById("modal").classList.remove("show"); }
+document.getElementById("cloudBtn").addEventListener("click", () => {
+  if(syncState === "noauth" || !getSyncKeyStored()) openKeyModal();
+  else if(syncState === "offline") syncNow();
+  else openKeyModal();
+});
+document.getElementById("keyCancel").addEventListener("click", closeKeyModal);
+document.getElementById("modal").addEventListener("click", ev => { if(ev.target.id === "modal") closeKeyModal(); });
+document.getElementById("keySave").addEventListener("click", saveKey);
+document.getElementById("keyInput").addEventListener("keydown", ev => { if(ev.key === "Enter") saveKey(); });
+function saveKey(){
+  const v = document.getElementById("keyInput").value.trim();
+  if(!v){ closeKeyModal(); return; }
+  localStorage.setItem(SYNC_KEY_LS, v);
+  closeKeyModal();
+  toast("Tengist…");
+  syncNow();
+}
+
+/* ================= colors for slider severity ================= */
+const isDark = () => matchMedia("(prefers-color-scheme: dark)").matches;
+function sevColor(v, invert){
+  // v 0..10 ; invert=true when high is good (líðan)
+  const t = invert ? (10 - v)/10 : v/10;   // t: 0 good → 1 bad
+  const h = 145 - 145*t;                   // 145 green → 0 red
+  const l = isDark() ? 56 : 40;
+  return "hsl("+Math.round(h)+" 52% "+l+"%)";
+}
+
+/* ================= build sliders ================= */
+function sliderRow(f, invert){
+  const row = document.createElement("div");
+  row.className = "srow";
+  row.innerHTML =
+    '<div class="top"><label for="sl-'+f.k+'">'+f.label+'</label>'+
+    '<span class="val" id="v-'+f.k+'">0</span></div>'+
+    '<input type="range" id="sl-'+f.k+'" min="0" max="10" step="1" value="0" '+
+    'aria-label="'+f.label+', 0 til 10">'+
+    '<div class="ends"><span>0</span><span>5</span><span>10</span></div>';
+  const inp = row.querySelector("input");
+  inp.dataset.invert = invert ? "1" : "";
+  inp.addEventListener("input", () => paintSlider(inp, f.k));
+  return row;
+}
+function paintSlider(inp, k){
+  const v = +inp.value, invert = inp.dataset.invert === "1";
+  const c = sevColor(v, invert);
+  const pct = v*10;
+  inp.style.setProperty("--track",
+    "linear-gradient(to right, "+c+" 0 "+pct+"%, var(--surface-2) "+pct+"% 100%)");
+  inp.style.setProperty("--thumb", v===0 && !invert ? "var(--ink-3)" : c);
+  const val = document.getElementById("v-"+k);
+  val.textContent = v;
+  val.style.color = (invert || v>0) ? c : "var(--ink-3)";
+}
+PAIN_FIELDS.forEach(f => document.getElementById("painSliders").appendChild(sliderRow(f,false)));
+MOOD_FIELDS.forEach(f => document.getElementById("moodSliders").appendChild(sliderRow(f,true)));
+
+/* ================= log screen ================= */
+const seg = document.getElementById("periodSeg");
+seg.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+  state.period = b.dataset.p;
+  renderLogForm();
+}));
+
+function currentLogDate(){ return state.editDate || todayIso(); }
+
+function renderLogForm(){
+  // segmented
+  seg.classList.toggle("k", state.period === "k");
+  seg.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.p === state.period)));
+  // banner
+  const banner = document.getElementById("editBanner");
+  if(state.editDate && state.editDate !== todayIso()){
+    banner.classList.add("show");
+    document.getElementById("editBannerText").innerHTML =
+      "Þú ert að breyta <b>"+fmtShort(state.editDate)+"</b>";
+  } else banner.classList.remove("show");
+  // values
+  const e = db.entries[eKey(currentLogDate(), state.period)];
+  ALL_FIELDS.forEach(f => {
+    const inp = document.getElementById("sl-"+f.k);
+    inp.value = e ? e[f.k] : (f.k==="al"||f.k==="ll" ? 5 : 0);
+    paintSlider(inp, f.k);
+  });
+  document.getElementById("note").value = e && e.note ? e.note : "";
+  // save button / note
+  document.getElementById("saveLabel").textContent = e ? "Uppfæra skráningu" : "Vista skráningu";
+  const sn = document.getElementById("savedNote");
+  if(e){
+    const t = new Date(e.ts);
+    sn.textContent = "Skráð kl. "+String(t.getHours()).padStart(2,"0")+":"+String(t.getMinutes()).padStart(2,"0")+" ✓";
+  } else sn.textContent = "";
+  const btn = document.getElementById("saveBtn");
+  btn.classList.remove("saved");
+}
+
+document.getElementById("editCancel").addEventListener("click", () => {
+  state.editDate = null;
+  renderLogForm();
+});
+
+document.getElementById("saveBtn").addEventListener("click", () => {
+  const d = currentLogDate();
+  const entry = {d, p: state.period, ts: Date.now()};
+  ALL_FIELDS.forEach(f => entry[f.k] = +document.getElementById("sl-"+f.k).value);
+  const note = document.getElementById("note").value.trim();
+  if(note) entry.note = note;
+  db.entries[eKey(d, state.period)] = entry;
+  delete db.deleted[eKey(d, state.period)];
+  persist();
+  scheduleSync();
+  if(navigator.vibrate) navigator.vibrate(12);
+  const btn = document.getElementById("saveBtn");
+  btn.classList.add("saved");
+  document.getElementById("saveLabel").innerHTML =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;vertical-align:-4px"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg> Vistað!';
+  const wasEdit = !!state.editDate;
+  setTimeout(() => {
+    if(wasEdit){ state.editDate = null; showView("history"); }
+    renderLogForm(); renderHeader();
+  }, 1200);
+  toast(wasEdit ? "Skráningu breytt ✓" : "Skráning vistuð ✓");
+});
+
+/* ================= header ================= */
+function renderHeader(){
+  document.getElementById("dateLine").textContent = fmtLong(todayIso());
+  // streak: consecutive days (ending today or yesterday) with >=1 entry
+  const days = new Set(Object.values(db.entries).map(e => e.d));
+  let streak = 0, cur = todayIso();
+  if(!days.has(cur)) cur = addDays(cur, -1);
+  while(days.has(cur)){ streak++; cur = addDays(cur, -1); }
+  const el = document.getElementById("streak");
+  if(streak >= 2){ el.hidden = false; el.textContent = streak+" daga röð"; }
+  else el.hidden = true;
+}
+
+/* ================= navigation ================= */
+document.querySelectorAll("nav button").forEach(b => b.addEventListener("click", () => showView(b.dataset.v)));
+function showView(v){
+  state.view = v;
+  document.querySelectorAll("nav button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+  document.querySelectorAll(".view").forEach(s => s.classList.toggle("active", s.id === "view-"+v));
+  if(v === "charts") renderCharts();
+  if(v === "history") renderHistory();
+  window.scrollTo({top:0});
+}
+document.getElementById("goLog").addEventListener("click", () => showView("log"));
+document.getElementById("goLog2").addEventListener("click", () => showView("log"));
+
+/* ================= charts data ================= */
+function entriesSorted(){
+  return Object.values(db.entries).sort((a,b) => a.d < b.d ? -1 : a.d > b.d ? 1 : (a.p === "m" ? -1 : 1));
+}
+// -> [{d, vals:{hf..ll}}] for current mode+range; averages m/k when mode=avg
+function seriesData(){
+  const all = entriesSorted();
+  if(!all.length) return [];
+  let from = null;
+  if(state.range > 0) from = addDays(todayIso(), -(state.range-1));
+  const byDay = new Map();
+  for(const e of all){
+    if(from && e.d < from) continue;
+    if(state.mode !== "avg" && e.p !== state.mode) continue;
+    if(!byDay.has(e.d)) byDay.set(e.d, []);
+    byDay.get(e.d).push(e);
+  }
+  const out = [];
+  for(const [d, list] of byDay){
+    const vals = {};
+    ALL_FIELDS.forEach(f => {
+      vals[f.k] = list.reduce((s,e) => s+e[f.k], 0) / list.length;
+    });
+    out.push({d, vals, n:list.length});
+  }
+  out.sort((a,b) => a.d < b.d ? -1 : 1);
+  return out;
+}
+
+/* ================= stat tiles ================= */
+function avgOver(fromIso, toIso, keys){
+  const es = Object.values(db.entries).filter(e => e.d >= fromIso && e.d <= toIso);
+  if(!es.length) return null;
+  let s = 0, n = 0;
+  es.forEach(e => keys.forEach(k => { s += e[k]; n++; }));
+  return s/n;
+}
+function renderTiles(){
+  const t = todayIso();
+  const painNow  = avgOver(addDays(t,-6),  t, ["hf","vf","hb","vb"]);
+  const painPrev = avgOver(addDays(t,-13), addDays(t,-7), ["hf","vf","hb","vb"]);
+  const moodNow  = avgOver(addDays(t,-6),  t, ["al","ll"]);
+  const moodPrev = avgOver(addDays(t,-13), addDays(t,-7), ["al","ll"]);
+  fillTile("tilePain", "tilePainDelta", painNow, painPrev, false);
+  fillTile("tileMood", "tileMoodDelta", moodNow, moodPrev, true);
+}
+function fillTile(vId, dId, now, prev, upIsGood){
+  const vEl = document.getElementById(vId), dEl = document.getElementById(dId);
+  vEl.textContent = now == null ? "–" : fmtNum(now);
+  if(now == null || prev == null){ dEl.textContent = now==null ? "" : "engin eldri gögn"; dEl.className = "t-delta flat"; return; }
+  const diff = now - prev;
+  if(Math.abs(diff) < 0.05){ dEl.textContent = "óbreytt frá fyrri viku"; dEl.className = "t-delta flat"; return; }
+  const up = diff > 0;
+  const good = up === upIsGood;
+  dEl.className = "t-delta " + (up ? (good?"up-good":"up-bad") : (good?"down-good":"down-bad"));
+  dEl.textContent = (up ? "▲" : "▼") + " " + fmtNum(Math.abs(diff)) + " frá fyrri viku";
+}
+
+/* ================= legend ================= */
+function renderLegend(elId, fields){
+  const el = document.getElementById(elId);
+  el.innerHTML = "";
+  fields.forEach(f => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "lg" + (state.hidden.has(f.k) ? " off" : "");
+    b.style.setProperty("--c", f.color);
+    b.setAttribute("aria-pressed", String(!state.hidden.has(f.k)));
+    b.innerHTML = '<span class="dot"></span>'+f.label;
+    b.addEventListener("click", () => {
+      if(state.hidden.has(f.k)) state.hidden.delete(f.k); else state.hidden.add(f.k);
+      renderCharts();
+    });
+    el.appendChild(b);
+  });
+}
+
+/* ================= chart engine ================= */
+function drawChart(boxId, fields, data){
+  const box = document.getElementById(boxId);
+  box.innerHTML = "";
+  const W = Math.max(280, box.clientWidth || 320);
+  const H = 235;
+  const P = {l:30, r:14, t:14, b:28};
+  const iw = W-P.l-P.r, ih = H-P.t-P.b;
+
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", "0 0 "+W+" "+H);
+  svg.setAttribute("width", W); svg.setAttribute("height", H);
+
+  // x scale over actual time range
+  let t0, t1;
+  if(state.range > 0){ t1 = isoToDate(todayIso()).getTime(); t0 = isoToDate(addDays(todayIso(), -(state.range-1))).getTime(); }
+  else { t0 = isoToDate(data[0].d).getTime(); t1 = isoToDate(data[data.length-1].d).getTime(); }
+  if(t1 === t0){ t0 -= 43200000; t1 += 43200000; }
+  const X = iso => P.l + (isoToDate(iso).getTime()-t0)/(t1-t0)*iw;
+  const Y = v => P.t + (1 - v/10)*ih;
+
+  // gridlines + y labels (0,5,10)
+  [0,5,10].forEach(v => {
+    const ln = document.createElementNS(svgNS,"line");
+    ln.setAttribute("x1",P.l); ln.setAttribute("x2",W-P.r);
+    ln.setAttribute("y1",Y(v)); ln.setAttribute("y2",Y(v));
+    ln.setAttribute("stroke", v===0 ? "var(--hairline-2)" : "var(--grid)");
+    ln.setAttribute("stroke-width","1");
+    svg.appendChild(ln);
+    const tx = document.createElementNS(svgNS,"text");
+    tx.setAttribute("x",P.l-8); tx.setAttribute("y",Y(v)+3.5);
+    tx.setAttribute("text-anchor","end");
+    tx.setAttribute("font-size","10.5"); tx.setAttribute("fill","var(--ink-3)");
+    tx.textContent = v;
+    svg.appendChild(tx);
+  });
+
+  // x ticks: ~4 labels across the span
+  const spanDays = Math.round((t1-t0)/86400000)+1;
+  const nTicks = Math.min(4, spanDays);
+  const seen = new Set();
+  for(let i=0;i<nTicks;i++){
+    const frac = nTicks===1 ? 0.5 : i/(nTicks-1);
+    const dt = new Date(t0 + frac*(t1-t0));
+    const iso = dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0");
+    if(seen.has(iso)) continue; seen.add(iso);
+    const tx = document.createElementNS(svgNS,"text");
+    tx.setAttribute("x", X(iso)); tx.setAttribute("y", H-8);
+    tx.setAttribute("text-anchor", i===0 ? "start" : (i===nTicks-1 ? "end" : "middle"));
+    tx.setAttribute("font-size","10.5"); tx.setAttribute("fill","var(--ink-3)");
+    tx.textContent = fmtTick(iso);
+    svg.appendChild(tx);
+  }
+
+  // series
+  const visible = fields.filter(f => !state.hidden.has(f.k));
+  visible.forEach(f => {
+    const pts = data.map(r => ({x: X(r.d), y: Y(r.vals[f.k])}));
+    if(pts.length > 1){
+      const path = document.createElementNS(svgNS,"path");
+      path.setAttribute("d", pts.map((p,i) => (i?"L":"M")+p.x.toFixed(1)+" "+p.y.toFixed(1)).join(""));
+      path.setAttribute("fill","none");
+      path.setAttribute("stroke", f.color);
+      path.setAttribute("stroke-width","2");
+      path.setAttribute("stroke-linejoin","round");
+      path.setAttribute("stroke-linecap","round");
+      svg.appendChild(path);
+    }
+    pts.forEach(p => {
+      const c = document.createElementNS(svgNS,"circle");
+      c.setAttribute("cx",p.x); c.setAttribute("cy",p.y); c.setAttribute("r", pts.length>40 ? 2 : 3.2);
+      c.setAttribute("fill", f.color);
+      c.setAttribute("stroke","var(--surface)");
+      c.setAttribute("stroke-width","1.5");
+      svg.appendChild(c);
+    });
+  });
+
+  // crosshair group
+  const cross = document.createElementNS(svgNS,"line");
+  cross.setAttribute("y1",P.t); cross.setAttribute("y2",H-P.b);
+  cross.setAttribute("stroke","var(--ink-3)"); cross.setAttribute("stroke-width","1");
+  cross.setAttribute("stroke-dasharray","3 3"); cross.setAttribute("opacity","0");
+  svg.appendChild(cross);
+
+  box.appendChild(svg);
+  const tip = document.createElement("div");
+  tip.className = "tip";
+  box.appendChild(tip);
+
+  // hover / touch
+  function locate(clientX){
+    const rect = svg.getBoundingClientRect();
+    const px = (clientX - rect.left) * (W/rect.width);
+    let best = null, bd = 1e9;
+    data.forEach(r => { const d = Math.abs(X(r.d)-px); if(d<bd){bd=d;best=r;} });
+    return best;
+  }
+  function show(r){
+    const x = X(r.d);
+    cross.setAttribute("x1",x); cross.setAttribute("x2",x); cross.setAttribute("opacity","0.6");
+    let html = '<div class="td">'+fmtShort(r.d)+'</div>';
+    visible.forEach(f => {
+      html += '<div class="tr"><span class="dot" style="background:'+f.color+'"></span>'+
+        f.label+'<b>'+fmtNum(r.vals[f.k])+'</b></div>';
+    });
+    tip.innerHTML = html;
+    tip.style.opacity = "1";
+    const rect = svg.getBoundingClientRect();
+    const fx = x*(rect.width/W);
+    requestAnimationFrame(() => {
+      const tw = tip.offsetWidth;
+      let left = fx + 14;
+      if(left + tw > rect.width - 4) left = fx - tw - 14;
+      tip.style.left = Math.max(2,left)+"px";
+      tip.style.top = "18px";
+    });
+  }
+  function hide(){ cross.setAttribute("opacity","0"); tip.style.opacity = "0"; }
+  svg.addEventListener("pointermove", ev => { const r = locate(ev.clientX); if(r) show(r); });
+  svg.addEventListener("pointerdown", ev => { const r = locate(ev.clientX); if(r) show(r); });
+  svg.addEventListener("pointerleave", hide);
+}
+
+function renderCharts(){
+  const has = Object.keys(db.entries).length > 0;
+  document.getElementById("chartsEmpty").hidden = has;
+  document.getElementById("chartsBody").style.display = has ? "" : "none";
+  if(!has) return;
+  renderTiles();
+  renderLegend("painLegend", PAIN_FIELDS);
+  renderLegend("moodLegend", MOOD_FIELDS);
+  const data = seriesData();
+  if(data.length){
+    drawChart("painChart", PAIN_FIELDS, data);
+    drawChart("moodChart", MOOD_FIELDS, data);
+  } else {
+    document.getElementById("painChart").innerHTML =
+      '<div style="padding:36px 10px;text-align:center;color:var(--ink-3);font-size:.88rem">Engar skráningar á þessu tímabili</div>';
+    document.getElementById("moodChart").innerHTML =
+      '<div style="padding:36px 10px;text-align:center;color:var(--ink-3);font-size:.88rem">Engar skráningar á þessu tímabili</div>';
+  }
+}
+
+// range + mode chips
+document.getElementById("rangeChips").querySelectorAll(".chip").forEach(b =>
+  b.addEventListener("click", () => {
+    state.range = +b.dataset.r;
+    document.getElementById("rangeChips").querySelectorAll(".chip").forEach(x =>
+      x.setAttribute("aria-pressed", String(x===b)));
+    renderCharts();
+  }));
+document.getElementById("modeChips").querySelectorAll(".chip").forEach(b =>
+  b.addEventListener("click", () => {
+    state.mode = b.dataset.m;
+    document.getElementById("modeChips").querySelectorAll(".chip").forEach(x =>
+      x.setAttribute("aria-pressed", String(x===b)));
+    renderCharts();
+  }));
+
+let rsT;
+window.addEventListener("resize", () => {
+  if(state.view !== "charts") return;
+  clearTimeout(rsT); rsT = setTimeout(renderCharts, 150);
+});
+
+/* ================= history ================= */
+const SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+const MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>';
+const TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>';
+
+function renderHistory(){
+  const list = document.getElementById("histList");
+  list.innerHTML = "";
+  const all = entriesSorted().reverse();
+  const has = all.length > 0;
+  document.getElementById("histEmpty").hidden = has;
+  document.getElementById("dataActions").style.display = has ? "" : "none";
+  if(!has) return;
+  let curDay = null, group = null;
+  for(const e of all){
+    if(e.d !== curDay){
+      curDay = e.d;
+      group = document.createElement("div");
+      group.className = "day-group";
+      const h = document.createElement("div");
+      h.className = "day-h";
+      h.textContent = fmtLong(e.d) + (e.d === todayIso() ? " · í dag" : "");
+      group.appendChild(h);
+      list.appendChild(group);
+    }
+    const pain = (e.hf+e.vf+e.hb+e.vb)/4, mood = (e.al+e.ll)/2;
+    const row = document.createElement("div");
+    row.className = "entry";
+    row.setAttribute("role","button");
+    row.setAttribute("tabindex","0");
+    row.innerHTML =
+      '<span class="e-ico">'+(e.p==="m"?SUN:MOON)+'</span>'+
+      '<span class="e-mid"><span class="e-t">'+(e.p==="m"?"Morgunn":"Kvöld")+'</span>'+
+      '<span class="e-s">Verkur '+fmtNum(pain)+' · Líðan '+fmtNum(mood)+
+      (e.note ? ' · <em>„'+escHtml(e.note.slice(0,40))+(e.note.length>40?"…":"")+'“</em>' : '')+'</span></span>'+
+      '<button class="e-del" type="button" aria-label="Eyða skráningu">'+TRASH+'</button>';
+    row.addEventListener("click", ev => {
+      if(ev.target.closest(".e-del")) return;
+      state.editDate = e.d === todayIso() ? null : e.d;
+      state.period = e.p;
+      showView("log");
+      renderLogForm();
+    });
+    row.querySelector(".e-del").addEventListener("click", () => {
+      if(!confirm("Eyða skráningu "+fmtShort(e.d)+" ("+(e.p==="m"?"morgunn":"kvöld")+")?")) return;
+      delete db.entries[eKey(e.d, e.p)];
+      db.deleted[eKey(e.d, e.p)] = Date.now();
+      persist(); scheduleSync(); renderHistory(); renderHeader();
+      toast("Skráningu eytt");
+    });
+    group.appendChild(row);
+  }
+}
+function escHtml(s){ return s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* ================= export / import ================= */
+function download(name, content, type){
+  const blob = new Blob([content], {type});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+document.getElementById("expJson").addEventListener("click", () => {
+  download("verkjadagbok-"+todayIso()+".json", JSON.stringify(db, null, 2), "application/json");
+  toast("JSON skrá sótt");
+});
+document.getElementById("expCsv").addEventListener("click", () => {
+  let csv = "﻿dagsetning;timi;haegri_fotur;vinstri_fotur;haegra_mjobak;vinstra_mjobak;andleg_lidan;likamleg_lidan;athugasemd\n";
+  entriesSorted().forEach(e => {
+    csv += [e.d, e.p==="m"?"morgunn":"kvold", e.hf, e.vf, e.hb, e.vb, e.al, e.ll,
+      '"'+(e.note||"").replace(/"/g,'""')+'"'].join(";")+"\n";
+  });
+  download("verkjadagbok-"+todayIso()+".csv", csv, "text/csv;charset=utf-8");
+  toast("CSV skrá sótt");
+});
+document.getElementById("impBtn").addEventListener("click", () => document.getElementById("impFile").click());
+document.getElementById("impFile").addEventListener("change", ev => {
+  const file = ev.target.files[0];
+  if(!file) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    try{
+      const data = JSON.parse(rd.result);
+      const incoming = {entries: data.entries || data, deleted: data.deleted || {}};
+      const before = Object.keys(db.entries).length;
+      db = mergeDb(db, incoming);
+      persist(); scheduleSync(); renderHistory(); renderHeader();
+      const added = Object.keys(db.entries).length - before;
+      toast(added > 0 ? added+" skráningar fluttar inn" : "Gögn sameinuð");
+    }catch(err){ toast("Skráin er ekki gild"); }
+  };
+  rd.readAsText(file);
+  ev.target.value = "";
+});
+
+/* ================= toast ================= */
+let toastT;
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+/* ================= init ================= */
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  ALL_FIELDS.forEach(f => paintSlider(document.getElementById("sl-"+f.k), f.k));
+  if(state.view === "charts") renderCharts();
+});
+window.addEventListener("online", () => syncNow());
+document.addEventListener("visibilitychange", () => {
+  if(document.visibilityState === "visible") syncNow();
+});
+renderHeader();
+renderLogForm();
+setSyncStatus(getSyncKeyStored() ? "syncing" : "noauth");
+if(!getSyncKeyStored() && Object.keys(db.entries).length === 0){
+  setTimeout(openKeyModal, 700);
+}
+syncNow();
+</script>
+</body>
+</html>
