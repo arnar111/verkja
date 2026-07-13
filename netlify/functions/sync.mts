@@ -2,29 +2,59 @@ import type { Config, Context } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
 
 type Entry = { d: string; p: string; ts?: number; [k: string]: unknown };
-type Db = { entries: Record<string, Entry>; deleted: Record<string, number> };
+type Ev = { id: string; type: string; d: string; ts?: number; [k: string]: unknown };
+type Db = {
+  entries: Record<string, Entry>;
+  deleted: Record<string, number>;
+  events: Record<string, Ev>;
+  eventsDeleted: Record<string, number>;
+};
 
-const emptyDb = (): Db => ({ entries: {}, deleted: {} });
+const emptyDb = (): Db => ({ entries: {}, deleted: {}, events: {}, eventsDeleted: {} });
 
-// newer ts wins per entry; tombstones remove entries older than the deletion
-function merge(a: Db, b: Db): Db {
-  const entries: Record<string, Entry> = { ...a.entries };
-  const deleted: Record<string, number> = { ...a.deleted };
-  for (const k in b.deleted || {}) {
-    deleted[k] = Math.max(deleted[k] || 0, b.deleted[k]);
+// generic last-write-wins + tombstone merge for one keyed collection
+function mergeColl<T extends { ts?: number }>(
+  aItems: Record<string, T>,
+  aDel: Record<string, number>,
+  bItems: Record<string, T>,
+  bDel: Record<string, number>,
+  valid: (x: T) => boolean
+): { items: Record<string, T>; deleted: Record<string, number> } {
+  const items: Record<string, T> = { ...(aItems || {}) };
+  const deleted: Record<string, number> = { ...(aDel || {}) };
+  for (const k in bDel || {}) {
+    deleted[k] = Math.max(deleted[k] || 0, bDel[k]);
   }
-  for (const k in b.entries || {}) {
-    const e = b.entries[k];
-    if (!e || !e.d || !e.p) continue;
-    if (!entries[k] || (e.ts || 0) > (entries[k].ts || 0)) entries[k] = e;
+  for (const k in bItems || {}) {
+    const e = bItems[k];
+    if (!e || !valid(e)) continue;
+    if (!items[k] || (e.ts || 0) > (items[k].ts || 0)) items[k] = e;
   }
   for (const k in deleted) {
-    if (entries[k]) {
-      if ((entries[k].ts || 0) <= deleted[k]) delete entries[k];
+    if (items[k]) {
+      if ((items[k].ts || 0) <= deleted[k]) delete items[k];
       else delete deleted[k];
     }
   }
-  return { entries, deleted };
+  return { items, deleted };
+}
+
+// newer ts wins per record; tombstones remove records older than the deletion
+function merge(a: Db, b: Db): Db {
+  const ent = mergeColl<Entry>(
+    a.entries, a.deleted, b.entries || {}, b.deleted || {},
+    (e) => !!e.d && !!e.p
+  );
+  const ev = mergeColl<Ev>(
+    a.events || {}, a.eventsDeleted || {}, b.events || {}, b.eventsDeleted || {},
+    (e) => !!e.id && !!e.type && !!e.d
+  );
+  return {
+    entries: ent.items,
+    deleted: ent.deleted,
+    events: ev.items,
+    eventsDeleted: ev.deleted,
+  };
 }
 
 export default async (req: Request, context: Context) => {
@@ -50,6 +80,8 @@ export default async (req: Request, context: Context) => {
     const merged = merge(current, {
       entries: body.entries || {},
       deleted: body.deleted || {},
+      events: body.events || {},
+      eventsDeleted: body.eventsDeleted || {},
     });
     await store.setJSON("db", merged);
     return Response.json(merged);

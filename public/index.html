@@ -305,8 +305,12 @@ nav button{
 }
 nav button svg{width:17px;height:17px;flex:none}
 nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
-@media (max-width:420px){
-  nav button{padding:11px 16px;font-size:.79rem}
+@media (max-width:480px){
+  nav button{padding:11px 13px;font-size:.76rem;gap:5px}
+}
+@media (max-width:360px){
+  nav button{padding:10px 9px;font-size:.72rem;gap:4px}
+  nav button svg{width:15px;height:15px}
 }
 
 /* ---------- toast ---------- */
@@ -320,11 +324,20 @@ nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ---------- modal ---------- */
-#modal{
+#modal,#injModal,#fnModal{
   position:fixed;inset:0;background:rgba(20,14,8,.5);
-  display:none;align-items:center;justify-content:center;z-index:100;padding:20px;
+  display:none;align-items:center;justify-content:center;z-index:110;padding:20px;
 }
-#modal.show{display:flex}
+#modal.show,#injModal.show,#fnModal.show{display:flex}
+#injModal .modal-card,#fnModal .modal-card{max-height:88vh;overflow-y:auto}
+.modal-card .mlab{display:block;font-size:.82rem;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+.modal-card textarea{margin-bottom:4px}
+.modal-card input[type=date]{width:100%;border:1px solid var(--hairline-2);border-radius:12px;background:var(--surface-2);color:var(--ink);font:inherit;font-size:1rem;padding:12px 14px;margin-bottom:14px}
+.fn-row{padding:9px 0}
+.fn-row + .fn-row{border-top:1px solid var(--hairline)}
+.fn-row .top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+.fn-row label{font-size:.92rem;font-weight:550;color:var(--ink)}
+.fn-row .val{font-family:ui-serif,"New York",Georgia,serif;font-size:1.2rem;font-weight:600;color:var(--ink-2)}
 .modal-card{
   background:var(--surface);border:1px solid var(--hairline);border-radius:22px;
   box-shadow:var(--shadow);padding:26px 24px;max-width:390px;width:100%;
@@ -357,6 +370,87 @@ nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
 .a3{animation:rise .5s .16s both}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- optional daily extras ---------- */
+.extra-card h2 .opt-tag{font-family:-apple-system,system-ui,sans-serif;font-weight:500;font-size:.72rem;color:var(--ink-3);letter-spacing:.04em}
+.opt-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+.opt-row + .opt-row{border-top:1px solid var(--hairline)}
+.opt-row.col{flex-direction:column;align-items:stretch;gap:4px}
+.opt-row .top{display:flex;align-items:baseline;justify-content:space-between}
+.opt-row label{font-size:.95rem;font-weight:550;color:var(--ink)}
+.opt-row .val{font-family:ui-serif,"New York",Georgia,serif;font-size:1.3rem;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink-3)}
+.miniseg{display:flex;background:var(--surface-2);border:1px solid var(--hairline);border-radius:999px;padding:3px;gap:2px;flex:none}
+.miniseg button{border:0;background:transparent;color:var(--ink-2);font:inherit;font-size:.85rem;font-weight:600;padding:7px 15px;border-radius:999px;cursor:pointer;transition:all .2s}
+.miniseg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(60,45,25,.15);border:1px solid var(--hairline)}
+.opt-clear{align-self:flex-start;border:0;background:transparent;color:var(--ink-3);font:inherit;font-size:.78rem;font-weight:600;cursor:pointer;padding:2px 0;margin-top:2px}
+.opt-hint{font-size:.72rem;color:var(--ink-3);margin-top:2px}
+
+/* ---------- meðferð (care) ---------- */
+.summary-box{background:var(--surface-2);border:1px solid var(--hairline);border-radius:14px;padding:14px 16px;font-size:.9rem;line-height:1.5;color:var(--ink)}
+.summary-box .big{font-family:ui-serif,"New York",Georgia,serif;font-size:1.5rem;font-weight:600;line-height:1.1;display:block;margin-bottom:2px}
+.summary-box .muted{color:var(--ink-2)}
+.resp-row{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.resp-row .rc{flex:1;min-width:120px}
+.resp-row .rc .rc-l{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.resp-row .rc .rc-v{font-family:ui-serif,"New York",Georgia,serif;font-size:1.4rem;font-weight:600}
+.resp-good{color:var(--good)} .resp-bad{color:var(--bad)} .resp-flat{color:var(--ink-2)}
+.ev{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--hairline);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.ev .ev-ico{width:36px;height:36px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;flex:none}
+.ev .ev-ico svg{width:19px;height:19px}
+.ev .ev-mid{flex:1;min-width:0}
+.ev .ev-t{font-weight:650;font-size:.95rem}
+.ev .ev-s{font-size:.8rem;color:var(--ink-2);margin-top:2px}
+.ev .e-del{border:0;background:transparent;color:var(--ink-3);cursor:pointer;padding:8px;border-radius:9px;flex:none;display:flex}
+.ev .e-del:active{color:var(--bad)}
+.ev .e-del svg{width:16px;height:16px}
+.care-empty{color:var(--ink-3);font-size:.88rem;padding:10px 2px}
+.fn-grid{display:flex;flex-direction:column;gap:2px}
+
+/* ---------- report / PDF overlay ---------- */
+#reportView{position:fixed;inset:0;background:var(--page);z-index:120;overflow-y:auto;display:none;
+  padding:calc(14px + env(safe-area-inset-top)) 0 calc(40px + env(safe-area-inset-bottom))}
+#reportView.show{display:block}
+.report-actions{position:sticky;top:0;z-index:2;display:flex;gap:10px;justify-content:space-between;align-items:center;
+  background:var(--page);border-bottom:1px solid var(--hairline);padding:12px 18px;max-width:760px;margin:0 auto}
+.report-actions .ra-r{display:flex;gap:10px}
+#reportBody{max-width:760px;margin:0 auto;padding:8px 22px 0}
+.rep-h1{font-family:ui-serif,"New York",Georgia,serif;font-size:1.5rem;font-weight:600;margin:14px 0 2px}
+.rep-meta{font-size:.85rem;color:var(--ink-2);line-height:1.6;margin-bottom:6px}
+.rep-sec{font-family:ui-serif,"New York",Georgia,serif;font-size:1.12rem;font-weight:600;margin:24px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--hairline-2)}
+.rep-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:4px}
+.rep-table th,.rep-table td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--hairline)}
+.rep-table th{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:650}
+.rep-table td.num{font-variant-numeric:tabular-nums;text-align:right}
+.rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.rep-stat{border:1px solid var(--hairline);border-radius:12px;padding:12px 14px}
+.rep-stat .rs-l{font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.rep-stat .rs-v{font-family:ui-serif,"New York",Georgia,serif;font-size:1.35rem;font-weight:600}
+.rep-stat .rs-s{font-size:.78rem;color:var(--ink-2);margin-top:3px}
+.rep-chart{margin-top:8px}
+.rep-chart svg{display:block;width:100%;height:auto}
+.rep-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.78rem;color:var(--ink-2);margin:6px 0 2px}
+.rep-legend .lg2{display:flex;align-items:center;gap:6px}
+.rep-legend .lg2 .dot{width:10px;height:3px;border-radius:2px}
+.rep-notes{font-size:.85rem;line-height:1.55}
+.rep-notes .rn{padding:6px 0;border-bottom:1px solid var(--hairline)}
+.rep-notes .rn b{color:var(--ink);font-weight:650}
+.rep-fill{border-bottom:1px solid var(--ink-3);min-width:120px;display:inline-block}
+.rep-foot{font-size:.72rem;color:var(--ink-3);margin-top:26px;border-top:1px solid var(--hairline);padding-top:10px}
+
+@media print{
+  @page{margin:14mm}
+  .report-open,.report-open body{background:#fff!important}
+  .report-open body>.wrap,.report-open nav,.report-open #toast,
+  .report-open #modal,.report-open #injModal,.report-open #fnModal{display:none!important}
+  .report-open #reportView{position:static;display:block!important;overflow:visible;background:#fff!important;padding:0;color:#000}
+  .report-open .report-actions{display:none!important}
+  .report-open #reportBody{max-width:none;padding:0}
+  .report-open .rep-h1,.report-open .rep-sec{color:#000}
+  .report-open .rep-table th,.report-open .rep-table td,
+  .report-open .rep-meta,.report-open .rep-notes,.report-open .rep-stat .rs-s{color:#111}
+  .report-open .rep-sec{page-break-after:avoid}
+  .report-open .rep-table,.report-open .rep-chart,.report-open .rep-stat{page-break-inside:avoid}
+}
 </style>
 </head>
 <body>
@@ -400,6 +494,26 @@ nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
       <h2>Athugasemd</h2>
       <div class="sub">Valfrjálst — svefn, lyf, hreyfing…</div>
       <textarea id="note" rows="2" placeholder="Skrifaðu hér…"></textarea>
+    </div>
+
+    <div class="card a3 extra-card">
+      <h2>Auka <span class="opt-tag">· valfrjálst</span></h2>
+      <div class="opt-row">
+        <label>Verkjalyf í dag?</label>
+        <div class="miniseg" id="medSeg">
+          <button type="button" data-m="0" aria-pressed="false">Nei</button>
+          <button type="button" data-m="1" aria-pressed="false">Já</button>
+        </div>
+      </div>
+      <div class="opt-row col">
+        <div class="top">
+          <label for="sl-walk">Göngugeta</label>
+          <span class="val" id="v-walk">–</span>
+        </div>
+        <input type="range" id="sl-walk" min="0" max="10" step="1" value="5" aria-label="Göngugeta, 0 til 10">
+        <div class="ends"><span>kemst ekki</span><span>engin takmörk</span></div>
+        <button type="button" class="opt-clear" id="clearWalk" hidden>Hreinsa göngugetu</button>
+      </div>
     </div>
 
     <div class="savebar">
@@ -480,6 +594,39 @@ nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
     </div>
     <div class="sync-line" id="syncLine"></div>
   </section>
+
+  <!-- ============ MEÐFERÐ ============ -->
+  <section class="view" id="view-care">
+    <div class="card a1">
+      <h2>Sprautur</h2>
+      <div class="sub">Utanbastssprautur (ESI) — skráðu hverja sprautu í mjóbak</div>
+      <div id="injSummary"></div>
+      <button class="chip" type="button" id="addInj" style="margin-top:12px">＋ Skrá sprautu</button>
+      <div id="injList" style="margin-top:14px"></div>
+    </div>
+
+    <div class="card a2">
+      <h2>Færnimat</h2>
+      <div class="sub">Vikulegt — hærra hlutfall merkir meiri skerðingu (ODI-kvarði)</div>
+      <div id="fnSummary"></div>
+      <button class="chip" type="button" id="addFn" style="margin-top:12px">＋ Nýtt færnimat</button>
+      <div id="fnList" style="margin-top:14px"></div>
+    </div>
+
+    <div class="card a3">
+      <h2>Skýrsla fyrir lækni</h2>
+      <div class="sub">Samantekt til að prenta eða vista sem PDF</div>
+      <div class="opt-row">
+        <label>Tímabil</label>
+        <div class="miniseg" id="repRange">
+          <button type="button" data-r="84" aria-pressed="true">12 vikur</button>
+          <button type="button" data-r="180" aria-pressed="false">6 mán.</button>
+          <button type="button" data-r="0" aria-pressed="false">Allt</button>
+        </div>
+      </div>
+      <button class="btn-primary" type="button" id="genReport" style="margin-top:14px;width:100%">Búa til skýrslu</button>
+    </div>
+  </section>
 </div>
 
 <nav>
@@ -492,6 +639,9 @@ nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
   <button type="button" data-v="history" aria-pressed="false">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
     Saga</button>
+  <button type="button" data-v="care" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l4 4M17 3l4 4-9.5 9.5-5 1 1-5L17 3Z"/><path d="M6.5 13.5l4 4"/></svg>
+    Meðferð</button>
 </nav>
 
 <div id="toast"></div>
@@ -506,6 +656,55 @@ nav button[aria-pressed="true"]{background:var(--ink);color:var(--page)}
       <button class="btn-primary" type="button" id="keySave">Tengja</button>
     </div>
   </div>
+</div>
+
+<div id="injModal">
+  <div class="modal-card">
+    <h2>Skrá sprautu</h2>
+    <p>Utanbastssprauta (ESI) í mjóbak. Skráðu dagsetninguna svo hægt sé að meta svörun og næstu tímasetningu.</p>
+    <label class="mlab" for="injDate">Dagsetning</label>
+    <input type="date" id="injDate">
+    <label class="mlab" for="injType">Tegund / staður <span style="color:var(--ink-3);font-weight:400">(valfrjálst)</span></label>
+    <input type="text" id="injType" placeholder="t.d. utanbastssprauta L4–L5" autocomplete="off">
+    <div class="opt-row col" style="padding:6px 0 2px">
+      <div class="top">
+        <label for="injPre">Verkur fyrir sprautu <span style="color:var(--ink-3);font-weight:400">(valfrjálst)</span></label>
+        <span class="val" id="v-injPre">–</span>
+      </div>
+      <input type="range" id="injPre" min="0" max="10" step="1" value="5" aria-label="Verkur fyrir sprautu, 0 til 10">
+      <button type="button" class="opt-clear" id="clearInjPre" hidden>Hreinsa</button>
+    </div>
+    <label class="mlab" for="injNote">Athugasemd <span style="color:var(--ink-3);font-weight:400">(valfrjálst)</span></label>
+    <textarea id="injNote" rows="2" placeholder="t.d. hvor hlið, deyfing…"></textarea>
+    <div class="modal-actions" style="margin-top:16px">
+      <button class="btn-ghost" type="button" id="injCancel">Hætta við</button>
+      <button class="btn-primary" type="button" id="injSave">Vista</button>
+    </div>
+  </div>
+</div>
+
+<div id="fnModal">
+  <div class="modal-card">
+    <h2>Vikulegt færnimat</h2>
+    <p>0 = engin skerðing, 5 = alger skerðing. Metðu síðustu viku.</p>
+    <label class="mlab" for="fnDate">Dagsetning</label>
+    <input type="date" id="fnDate">
+    <div class="fn-grid" id="fnRows"></div>
+    <div class="modal-actions" style="margin-top:16px">
+      <button class="btn-ghost" type="button" id="fnCancel">Hætta við</button>
+      <button class="btn-primary" type="button" id="fnSave">Vista</button>
+    </div>
+  </div>
+</div>
+
+<div id="reportView">
+  <div class="report-actions">
+    <button class="btn-ghost" type="button" id="repClose" style="flex:none;padding:10px 18px">Loka</button>
+    <div class="ra-r">
+      <button class="btn-primary" type="button" id="repPrint" style="padding:10px 20px">Prenta / Vista PDF</button>
+    </div>
+  </div>
+  <div id="reportBody"></div>
 </div>
 
 <script>
@@ -524,6 +723,19 @@ const MOOD_FIELDS = [
   {k:"ll", label:"Líkamleg líðan", color:"var(--s6)"},
 ];
 const ALL_FIELDS = PAIN_FIELDS.concat(MOOD_FIELDS);
+const BACK_KEYS = ["hb","vb"];        // mjóbak (axial)
+const LEG_KEYS  = ["hf","vf"];        // fætur (radicular)
+const INJECTION_INTERVAL_DAYS = 84;   // 12 vikur milli sprauta
+// ODI-innblásið færnimat: hvert atriði 0..5 (0 = engin skerðing, 5 = alger)
+const FN_ITEMS = [
+  {k:"pain",   label:"Verkjastyrkur"},
+  {k:"walk",   label:"Ganga"},
+  {k:"sit",    label:"Að sitja"},
+  {k:"sleep",  label:"Svefn"},
+  {k:"care",   label:"Sjálfsumönnun"},
+  {k:"social", label:"Félagslíf / áhugamál"},
+];
+const FN_MAX = FN_ITEMS.length * 5;
 const DAYS = ["sunnudagur","mánudagur","þriðjudagur","miðvikudagur","fimmtudagur","föstudagur","laugardagur"];
 const DAYS_S = ["sun","mán","þri","mið","fim","fös","lau"];
 const MON = ["janúar","febrúar","mars","apríl","maí","júní","júlí","ágúst","september","október","nóvember","desember"];
@@ -533,12 +745,37 @@ let db = load();
 function load(){
   try{
     const d = JSON.parse(localStorage.getItem(KEY));
-    if(d && d.entries) return {entries:d.entries, deleted:d.deleted || {}};
+    if(d && d.entries) return {
+      entries: d.entries,
+      deleted: d.deleted || {},
+      events: d.events || {},
+      eventsDeleted: d.eventsDeleted || {},
+    };
   }catch(e){}
-  return {entries:{}, deleted:{}};
+  return {entries:{}, deleted:{}, events:{}, eventsDeleted:{}};
 }
 function persist(){ localStorage.setItem(KEY, JSON.stringify(db)); }
 function eKey(d,p){ return d+"|"+p; }
+function uuid(){
+  return (self.crypto && crypto.randomUUID)
+    ? crypto.randomUUID()
+    : "id-"+Date.now().toString(36)+"-"+Math.floor(Math.random()*1e9).toString(36);
+}
+// events (sprautur + færnimat) — newest first
+function eventsOf(type){
+  return Object.values(db.events).filter(e => e && e.type === type)
+    .sort((a,b) => a.d < b.d ? 1 : a.d > b.d ? -1 : (b.ts||0)-(a.ts||0));
+}
+function saveEvent(ev){
+  db.events[ev.id] = ev;
+  delete db.eventsDeleted[ev.id];
+  persist(); scheduleSync();
+}
+function removeEvent(id){
+  delete db.events[id];
+  db.eventsDeleted[id] = Date.now();
+  persist(); scheduleSync();
+}
 
 function todayIso(){
   const n = new Date();
@@ -596,25 +833,35 @@ function setSyncStatus(s){
   }
 }
 
-// merge two dbs: newer ts wins per entry; tombstones remove older entries
-function mergeDb(a, b){
-  const entries = Object.assign({}, a.entries);
-  const deleted = Object.assign({}, a.deleted);
-  for(const k in (b.deleted || {})){
-    deleted[k] = Math.max(deleted[k] || 0, b.deleted[k]);
+// generic last-write-wins + tombstone merge for one keyed collection
+function mergeColl(aItems, aDel, bItems, bDel, valid){
+  const items = Object.assign({}, aItems || {});
+  const deleted = Object.assign({}, aDel || {});
+  for(const k in (bDel || {})){
+    deleted[k] = Math.max(deleted[k] || 0, bDel[k]);
   }
-  for(const k in (b.entries || {})){
-    const e = b.entries[k];
-    if(!e || !e.d || !e.p) continue;
-    if(!entries[k] || (e.ts||0) > (entries[k].ts||0)) entries[k] = e;
+  for(const k in (bItems || {})){
+    const e = bItems[k];
+    if(!e || !valid(e)) continue;
+    if(!items[k] || (e.ts||0) > (items[k].ts||0)) items[k] = e;
   }
   for(const k in deleted){
-    if(entries[k]){
-      if((entries[k].ts||0) <= deleted[k]) delete entries[k];
+    if(items[k]){
+      if((items[k].ts||0) <= deleted[k]) delete items[k];
       else delete deleted[k];
     }
   }
-  return {entries, deleted};
+  return {items, deleted};
+}
+// merge two dbs: newer ts wins per record; tombstones remove older records.
+// Handles both daily entries and events (sprautur/færnimat).
+function mergeDb(a, b){
+  b = b || {};
+  const ent = mergeColl(a.entries, a.deleted, b.entries, b.deleted,
+    e => e.d && e.p);
+  const ev  = mergeColl(a.events || {}, a.eventsDeleted || {}, b.events, b.eventsDeleted,
+    e => e.id && e.type && e.d);
+  return {entries:ent.items, deleted:ent.deleted, events:ev.items, eventsDeleted:ev.deleted};
 }
 
 let syncTimer = null, syncBusy = false, syncQueued = false;
@@ -641,6 +888,7 @@ async function syncNow(){
     renderHeader();
     if(state.view === "charts") renderCharts();
     if(state.view === "history") renderHistory();
+    if(state.view === "care") renderCare();
   }catch(e){
     setSyncStatus("offline");
   }finally{
@@ -713,6 +961,36 @@ function paintSlider(inp, k){
 PAIN_FIELDS.forEach(f => document.getElementById("painSliders").appendChild(sliderRow(f,false)));
 MOOD_FIELDS.forEach(f => document.getElementById("moodSliders").appendChild(sliderRow(f,true)));
 
+/* ================= optional daily extras ================= */
+let logMed = null;        // null = not recorded, 0 = nei, 1 = já
+let logWalkSet = false;   // whether walking tolerance was entered
+function paintWalk(){
+  const inp = document.getElementById("sl-walk");
+  const v = +inp.value;
+  const c = sevColor(v, true);            // high = good (líðan-style)
+  const pct = v*10;
+  inp.style.setProperty("--track",
+    "linear-gradient(to right, "+c+" 0 "+pct+"%, var(--surface-2) "+pct+"% 100%)");
+  inp.style.setProperty("--thumb", logWalkSet ? c : "var(--ink-3)");
+  const val = document.getElementById("v-walk");
+  val.textContent = logWalkSet ? v : "–";
+  val.style.color = logWalkSet ? c : "var(--ink-3)";
+  document.getElementById("clearWalk").hidden = !logWalkSet;
+}
+function paintMedSeg(){
+  document.querySelectorAll("#medSeg button").forEach(x =>
+    x.setAttribute("aria-pressed", String(logMed !== null && +x.dataset.m === logMed)));
+}
+document.getElementById("sl-walk").addEventListener("input", () => { logWalkSet = true; paintWalk(); });
+document.getElementById("clearWalk").addEventListener("click", () => {
+  logWalkSet = false; document.getElementById("sl-walk").value = 5; paintWalk();
+});
+document.querySelectorAll("#medSeg button").forEach(b => b.addEventListener("click", () => {
+  const v = +b.dataset.m;
+  logMed = (logMed === v) ? null : v;     // tap again to clear
+  paintMedSeg();
+}));
+
 /* ================= log screen ================= */
 const seg = document.getElementById("periodSeg");
 seg.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
@@ -741,6 +1019,13 @@ function renderLogForm(){
     paintSlider(inp, f.k);
   });
   document.getElementById("note").value = e && e.note ? e.note : "";
+  // optional extras
+  logMed = (e && (e.med === 0 || e.med === 1)) ? e.med : null;
+  paintMedSeg();
+  const wInp = document.getElementById("sl-walk");
+  if(e && typeof e.walk === "number"){ logWalkSet = true; wInp.value = e.walk; }
+  else { logWalkSet = false; wInp.value = 5; }
+  paintWalk();
   // save button / note
   document.getElementById("saveLabel").textContent = e ? "Uppfæra skráningu" : "Vista skráningu";
   const sn = document.getElementById("savedNote");
@@ -763,6 +1048,8 @@ document.getElementById("saveBtn").addEventListener("click", () => {
   ALL_FIELDS.forEach(f => entry[f.k] = +document.getElementById("sl-"+f.k).value);
   const note = document.getElementById("note").value.trim();
   if(note) entry.note = note;
+  if(logMed !== null) entry.med = logMed;
+  if(logWalkSet) entry.walk = +document.getElementById("sl-walk").value;
   db.entries[eKey(d, state.period)] = entry;
   delete db.deleted[eKey(d, state.period)];
   persist();
@@ -801,6 +1088,7 @@ function showView(v){
   document.querySelectorAll(".view").forEach(s => s.classList.toggle("active", s.id === "view-"+v));
   if(v === "charts") renderCharts();
   if(v === "history") renderHistory();
+  if(v === "care") renderCare();
   window.scrollTo({top:0});
 }
 document.getElementById("goLog").addEventListener("click", () => showView("log"));
@@ -883,7 +1171,7 @@ function renderLegend(elId, fields){
 }
 
 /* ================= chart engine ================= */
-function drawChart(boxId, fields, data){
+function drawChart(boxId, fields, data, marks){
   const box = document.getElementById(boxId);
   box.innerHTML = "";
   const W = Math.max(280, box.clientWidth || 320);
@@ -936,6 +1224,24 @@ function drawChart(boxId, fields, data){
     tx.textContent = fmtTick(iso);
     svg.appendChild(tx);
   }
+
+  // injection markers (vertical dashed lines + tick)
+  (marks || []).forEach(iso => {
+    const t = isoToDate(iso).getTime();
+    if(t < t0 || t > t1) return;
+    const x = X(iso);
+    const ln = document.createElementNS(svgNS,"line");
+    ln.setAttribute("x1",x); ln.setAttribute("x2",x);
+    ln.setAttribute("y1",P.t); ln.setAttribute("y2",H-P.b);
+    ln.setAttribute("stroke","var(--accent)"); ln.setAttribute("stroke-width","1.3");
+    ln.setAttribute("stroke-dasharray","3 3"); ln.setAttribute("opacity","0.55");
+    ln.setAttribute("pointer-events","none");
+    svg.appendChild(ln);
+    const tri = document.createElementNS(svgNS,"path");
+    tri.setAttribute("d","M"+(x-3.2)+" "+P.t+" L"+(x+3.2)+" "+P.t+" L"+x+" "+(P.t+5.5)+" Z");
+    tri.setAttribute("fill","var(--accent)"); tri.setAttribute("pointer-events","none");
+    svg.appendChild(tri);
+  });
 
   // series
   const visible = fields.filter(f => !state.hidden.has(f.k));
@@ -1017,8 +1323,9 @@ function renderCharts(){
   renderLegend("moodLegend", MOOD_FIELDS);
   const data = seriesData();
   if(data.length){
-    drawChart("painChart", PAIN_FIELDS, data);
-    drawChart("moodChart", MOOD_FIELDS, data);
+    const injDates = eventsOf("inj").map(e => e.d);
+    drawChart("painChart", PAIN_FIELDS, data, injDates);
+    drawChart("moodChart", MOOD_FIELDS, data, []);
   } else {
     document.getElementById("painChart").innerHTML =
       '<div style="padding:36px 10px;text-align:center;color:var(--ink-3);font-size:.88rem">Engar skráningar á þessu tímabili</div>';
@@ -1134,7 +1441,12 @@ document.getElementById("impFile").addEventListener("change", ev => {
   rd.onload = () => {
     try{
       const data = JSON.parse(rd.result);
-      const incoming = {entries: data.entries || data, deleted: data.deleted || {}};
+      const incoming = {
+        entries: data.entries || data,
+        deleted: data.deleted || {},
+        events: data.events || {},
+        eventsDeleted: data.eventsDeleted || {},
+      };
       const before = Object.keys(db.entries).length;
       db = mergeDb(db, incoming);
       persist(); scheduleSync(); renderHistory(); renderHeader();
@@ -1145,6 +1457,418 @@ document.getElementById("impFile").addEventListener("change", ev => {
   rd.readAsText(file);
   ev.target.value = "";
 });
+
+/* ================= meðferð: sprautur + færnimat ================= */
+const SYRINGE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l4 4M17 3l4 4-9.5 9.5-5 1 1-5L17 3Z"/><path d="M6.5 13.5l4 4"/></svg>';
+const CLIP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h4"/></svg>';
+
+function daysBetween(aIso, bIso){
+  return Math.round((isoToDate(bIso).getTime() - isoToDate(aIso).getTime())/86400000);
+}
+function durDative(days){ // "fyrir ___"  (dative)
+  const a = Math.abs(days);
+  if(a < 7) return a + (a === 1 ? " degi" : " dögum");
+  const w = Math.round(a/7);
+  return w + (w === 1 ? " viku" : " vikum");
+}
+function durAcc(days){ // "eftir ___"  (accusative)
+  const a = Math.abs(days);
+  if(a < 7) return a + (a === 1 ? " dag" : " daga");
+  const w = Math.round(a/7);
+  return w + (w === 1 ? " viku" : " vikur");
+}
+function pctChange(before, after){
+  if(before == null || after == null) return null;
+  if(before === 0) return after === 0 ? 0 : null;
+  return (after - before)/before*100;
+}
+function fmtPct(p){ const r = Math.round(p); return (r > 0 ? "+" : (r < 0 ? "−" : "")) + Math.abs(r) + "%"; }
+
+// response to an injection: mean back/leg pain 2 weeks before vs days 3–21 after
+function injResponse(injIso){
+  const bBefore = avgOver(addDays(injIso,-14), addDays(injIso,-1), BACK_KEYS);
+  const bAfter  = avgOver(addDays(injIso,3),  addDays(injIso,21), BACK_KEYS);
+  const lBefore = avgOver(addDays(injIso,-14), addDays(injIso,-1), LEG_KEYS);
+  const lAfter  = avgOver(addDays(injIso,3),  addDays(injIso,21), LEG_KEYS);
+  return {
+    back: {before:bBefore, after:bAfter, pct:pctChange(bBefore,bAfter)},
+    leg:  {before:lBefore, after:lAfter, pct:pctChange(lBefore,lAfter)},
+  };
+}
+function respCard(label, pct){
+  let v, cls;
+  if(pct == null){ v = "–"; cls = "resp-flat"; }
+  else { v = fmtPct(pct); cls = pct <= -5 ? "resp-good" : (pct >= 5 ? "resp-bad" : "resp-flat"); }
+  return '<div class="rc"><div class="rc-l">'+label+' verkur</div><div class="rc-v '+cls+'">'+v+'</div></div>';
+}
+function fnIndex(scores){
+  let s = 0; FN_ITEMS.forEach(it => s += (+scores[it.k] || 0));
+  return Math.round(s/FN_MAX*100);
+}
+
+function renderCare(){ renderInjections(); renderFunction(); }
+
+function renderInjections(){
+  const injs = eventsOf("inj");
+  const sum = document.getElementById("injSummary");
+  const list = document.getElementById("injList");
+  if(!injs.length){
+    sum.innerHTML = '<div class="care-empty">Engin sprauta skráð ennþá. Skráðu sprauturnar þínar til að fylgjast með svörun og næstu tímasetningu (á '+Math.round(INJECTION_INTERVAL_DAYS/7)+' vikna fresti).</div>';
+    list.innerHTML = "";
+    return;
+  }
+  const today = todayIso();
+  const last = injs[0];
+  const since = daysBetween(last.d, today);
+  const dueIso = addDays(last.d, INJECTION_INTERVAL_DAYS);
+  const left = daysBetween(today, dueIso);
+  const resp = injResponse(last.d);
+  let html = '<div class="summary-box">';
+  html += '<span class="big">Síðasta sprauta '+(since <= 0 ? "í dag" : "fyrir "+durDative(since))+'</span>';
+  html += '<span class="muted">'+fmtLong(last.d)+'</span>';
+  if(left > 0) html += '<div style="margin-top:8px">Næsta áætluð: <b>'+fmtLong(dueIso)+'</b> (eftir '+durAcc(left)+')</div>';
+  else if(left === 0) html += '<div style="margin-top:8px"><b>Næsta sprauta áætluð í dag</b></div>';
+  else html += '<div style="margin-top:8px"><b>Áætlað tímabil liðið</b> — var '+fmtLong(dueIso)+' (fyrir '+durDative(left)+')</div>';
+  html += '<div class="resp-row">'+respCard("Bak", resp.back.pct)+respCard("Fótur", resp.leg.pct)+'</div>';
+  if(resp.back.pct == null && resp.leg.pct == null)
+    html += '<div class="opt-hint" style="margin-top:6px">Svörun reiknast þegar skráningar eru til bæði 2 vikur fyrir og eftir sprautu.</div>';
+  html += '</div>';
+  sum.innerHTML = html;
+
+  list.innerHTML = "";
+  injs.forEach(inj => {
+    const s = daysBetween(inj.d, today);
+    const r = injResponse(inj.d);
+    const parts = [];
+    if(r.back.pct != null) parts.push("bak "+fmtPct(r.back.pct));
+    if(r.leg.pct != null) parts.push("fótur "+fmtPct(r.leg.pct));
+    let sub = fmtLong(inj.d);
+    if(inj.site) sub += " · " + escHtml(inj.site);
+    const row = document.createElement("div");
+    row.className = "ev";
+    row.innerHTML =
+      '<span class="ev-ico">'+SYRINGE+'</span>'+
+      '<span class="ev-mid"><span class="ev-t">'+(s <= 0 ? "Í dag" : "Fyrir "+durDative(s))+'</span>'+
+      '<span class="ev-s">'+sub+(parts.length ? ' · svörun: '+parts.join(", ") : '')+
+      (inj.note ? ' · „'+escHtml(inj.note.slice(0,28))+(inj.note.length>28?"…":"")+'“' : '')+'</span></span>'+
+      '<button class="e-del" type="button" aria-label="Eyða sprautu">'+TRASH+'</button>';
+    row.querySelector(".e-del").addEventListener("click", () => {
+      if(!confirm("Eyða þessari sprautu ("+fmtShort(inj.d)+")?")) return;
+      removeEvent(inj.id); renderCare();
+      if(state.view === "charts") renderCharts();
+      toast("Sprautu eytt");
+    });
+    list.appendChild(row);
+  });
+}
+
+function renderFunction(){
+  const fns = eventsOf("fn");
+  const sum = document.getElementById("fnSummary");
+  const list = document.getElementById("fnList");
+  if(!fns.length){
+    sum.innerHTML = '<div class="care-empty">Ekkert færnimat skráð. Vikulegt mat sýnir hvernig verkir hafa áhrif á daglegt líf (kvarði 0–100%).</div>';
+    list.innerHTML = "";
+    return;
+  }
+  const last = fns[0];
+  const idx = (typeof last.index === "number") ? last.index : fnIndex(last.scores || {});
+  let html = '<div class="summary-box"><span class="big">'+idx+'%</span><span class="muted">skerðing · '+fmtLong(last.d)+'</span>';
+  if(fns.length > 1){
+    const prev = fns[1];
+    const pidx = (typeof prev.index === "number") ? prev.index : fnIndex(prev.scores || {});
+    const diff = idx - pidx;
+    if(Math.abs(diff) >= 1){
+      const good = diff < 0;
+      html += '<div style="margin-top:6px" class="'+(good ? "resp-good" : "resp-bad")+'">'+(diff < 0 ? "▼" : "▲")+" "+Math.abs(diff)+"% frá síðasta mati</div>";
+    } else html += '<div style="margin-top:6px" class="muted">óbreytt frá síðasta mati</div>';
+  }
+  html += '</div>';
+  sum.innerHTML = html;
+
+  list.innerHTML = "";
+  fns.forEach(fn => {
+    const i = (typeof fn.index === "number") ? fn.index : fnIndex(fn.scores || {});
+    const row = document.createElement("div");
+    row.className = "ev";
+    row.innerHTML =
+      '<span class="ev-ico">'+CLIP+'</span>'+
+      '<span class="ev-mid"><span class="ev-t">'+i+'% skerðing</span>'+
+      '<span class="ev-s">'+fmtLong(fn.d)+'</span></span>'+
+      '<button class="e-del" type="button" aria-label="Eyða mati">'+TRASH+'</button>';
+    row.querySelector(".e-del").addEventListener("click", () => {
+      if(!confirm("Eyða þessu færnimati ("+fmtShort(fn.d)+")?")) return;
+      removeEvent(fn.id); renderCare(); toast("Mati eytt");
+    });
+    list.appendChild(row);
+  });
+}
+
+/* ---- injection modal ---- */
+const injModal = document.getElementById("injModal");
+let injPreSet = false;
+function paintInjPre(){
+  const inp = document.getElementById("injPre");
+  const v = +inp.value, c = sevColor(v, false), pct = v*10;
+  inp.style.setProperty("--track","linear-gradient(to right, "+c+" 0 "+pct+"%, var(--surface-2) "+pct+"% 100%)");
+  inp.style.setProperty("--thumb", injPreSet ? c : "var(--ink-3)");
+  const val = document.getElementById("v-injPre");
+  val.textContent = injPreSet ? v : "–"; val.style.color = injPreSet ? c : "var(--ink-3)";
+  document.getElementById("clearInjPre").hidden = !injPreSet;
+}
+document.getElementById("injPre").addEventListener("input", () => { injPreSet = true; paintInjPre(); });
+document.getElementById("clearInjPre").addEventListener("click", () => { injPreSet = false; document.getElementById("injPre").value = 5; paintInjPre(); });
+document.getElementById("addInj").addEventListener("click", () => {
+  document.getElementById("injDate").value = todayIso();
+  document.getElementById("injType").value = "";
+  document.getElementById("injNote").value = "";
+  injPreSet = false; document.getElementById("injPre").value = 5; paintInjPre();
+  injModal.classList.add("show");
+});
+document.getElementById("injCancel").addEventListener("click", () => injModal.classList.remove("show"));
+injModal.addEventListener("click", ev => { if(ev.target.id === "injModal") injModal.classList.remove("show"); });
+document.getElementById("injSave").addEventListener("click", () => {
+  const d = document.getElementById("injDate").value || todayIso();
+  const ev = {id:uuid(), type:"inj", d, ts:Date.now()};
+  const site = document.getElementById("injType").value.trim(); if(site) ev.site = site;
+  const note = document.getElementById("injNote").value.trim(); if(note) ev.note = note;
+  if(injPreSet) ev.preScore = +document.getElementById("injPre").value;
+  saveEvent(ev);
+  injModal.classList.remove("show");
+  renderCare();
+  if(state.view === "charts") renderCharts();
+  toast("Sprauta skráð ✓");
+});
+
+/* ---- function-check modal ---- */
+const fnModal = document.getElementById("fnModal");
+(function buildFnRows(){
+  const wrap = document.getElementById("fnRows");
+  FN_ITEMS.forEach(it => {
+    const row = document.createElement("div");
+    row.className = "fn-row";
+    row.innerHTML =
+      '<div class="top"><label for="fn-'+it.k+'">'+it.label+'</label><span class="val" id="fnv-'+it.k+'">0</span></div>'+
+      '<input type="range" id="fn-'+it.k+'" min="0" max="5" step="1" value="0" aria-label="'+it.label+', 0 til 5">';
+    row.querySelector("input").addEventListener("input", () => paintFn(it.k));
+    wrap.appendChild(row);
+  });
+})();
+function paintFn(k){
+  const inp = document.getElementById("fn-"+k), v = +inp.value;
+  const c = sevColor(v*2, false), pct = v*20;
+  inp.style.setProperty("--track","linear-gradient(to right, "+c+" 0 "+pct+"%, var(--surface-2) "+pct+"% 100%)");
+  inp.style.setProperty("--thumb", v > 0 ? c : "var(--ink-3)");
+  const val = document.getElementById("fnv-"+k);
+  val.textContent = v; val.style.color = v > 0 ? c : "var(--ink-3)";
+}
+document.getElementById("addFn").addEventListener("click", () => {
+  document.getElementById("fnDate").value = todayIso();
+  FN_ITEMS.forEach(it => { document.getElementById("fn-"+it.k).value = 0; paintFn(it.k); });
+  fnModal.classList.add("show");
+});
+document.getElementById("fnCancel").addEventListener("click", () => fnModal.classList.remove("show"));
+fnModal.addEventListener("click", ev => { if(ev.target.id === "fnModal") fnModal.classList.remove("show"); });
+document.getElementById("fnSave").addEventListener("click", () => {
+  const d = document.getElementById("fnDate").value || todayIso();
+  const scores = {}; FN_ITEMS.forEach(it => scores[it.k] = +document.getElementById("fn-"+it.k).value);
+  const ev = {id:uuid(), type:"fn", d, ts:Date.now(), scores, index:fnIndex(scores)};
+  saveEvent(ev);
+  fnModal.classList.remove("show");
+  renderCare();
+  toast("Færnimat vistað ✓");
+});
+
+/* ================= doctor report (PDF via print) ================= */
+let reportRange = 84;
+document.getElementById("repRange").querySelectorAll("button").forEach(b =>
+  b.addEventListener("click", () => {
+    reportRange = +b.dataset.r;
+    document.getElementById("repRange").querySelectorAll("button").forEach(x =>
+      x.setAttribute("aria-pressed", String(x === b)));
+  }));
+document.getElementById("genReport").addEventListener("click", buildReport);
+document.getElementById("repClose").addEventListener("click", () => {
+  document.getElementById("reportView").classList.remove("show");
+  document.documentElement.classList.remove("report-open");
+});
+document.getElementById("repPrint").addEventListener("click", () => window.print());
+
+function earliestDate(){
+  let min = null;
+  Object.values(db.entries).forEach(e => { if(min === null || e.d < min) min = e.d; });
+  Object.values(db.events).forEach(e => { if(e && e.d && (min === null || e.d < min)) min = e.d; });
+  return min || todayIso();
+}
+function statMetric(from, to, keys){
+  const es = Object.values(db.entries).filter(e => e.d >= from && e.d <= to);
+  if(!es.length) return null;
+  const vals = es.map(e => keys.reduce((s,k) => s + e[k], 0)/keys.length);
+  const mean = vals.reduce((a,b) => a+b, 0)/vals.length;
+  return {mean, min:Math.min(...vals), max:Math.max(...vals), n:es.length};
+}
+function seriesReport(from, to){
+  const byDay = new Map();
+  Object.values(db.entries).forEach(e => {
+    if(e.d < from || e.d > to) return;
+    if(!byDay.has(e.d)) byDay.set(e.d, []);
+    byDay.get(e.d).push(e);
+  });
+  const out = [];
+  for(const [d, list] of byDay){
+    const avg = keys => list.reduce((s,e) => s + keys.reduce((x,k) => x + e[k], 0)/keys.length, 0)/list.length;
+    out.push({d, vals:{back:avg(BACK_KEYS), leg:avg(LEG_KEYS), al:avg(["al"]), ll:avg(["ll"])}});
+  }
+  out.sort((a,b) => a.d < b.d ? -1 : 1);
+  return out;
+}
+function reportChartSvg(fields, data, fromIso, toIso, marks){
+  const W = 700, H = 190, P = {l:26, r:12, t:12, b:22};
+  const iw = W-P.l-P.r, ih = H-P.t-P.b;
+  let t0 = isoToDate(fromIso).getTime(), t1 = isoToDate(toIso).getTime();
+  if(t1 <= t0) t1 = t0 + 86400000;
+  const X = iso => P.l + (isoToDate(iso).getTime()-t0)/(t1-t0)*iw;
+  const Y = v => P.t + (1 - v/10)*ih;
+  let s = '<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'">';
+  [0,5,10].forEach(v => {
+    s += '<line x1="'+P.l+'" x2="'+(W-P.r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="'+(v===0?"#999":"#ddd")+'" stroke-width="1"/>';
+    s += '<text x="'+(P.l-6)+'" y="'+(Y(v)+3.5)+'" text-anchor="end" font-size="10" fill="#666">'+v+'</text>';
+  });
+  (marks || []).forEach(iso => {
+    const t = isoToDate(iso).getTime(); if(t < t0 || t > t1) return;
+    const x = X(iso);
+    s += '<line x1="'+x+'" x2="'+x+'" y1="'+P.t+'" y2="'+(H-P.b)+'" stroke="#b4552d" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.75"/>';
+    s += '<path d="M'+(x-3)+' '+P.t+' L'+(x+3)+' '+P.t+' L'+x+' '+(P.t+5)+' Z" fill="#b4552d"/>';
+  });
+  fields.forEach(f => {
+    const pts = data.map(r => ({x:X(r.d), y:Y(r.vals[f.k])}));
+    if(pts.length > 1)
+      s += '<path d="'+pts.map((p,i) => (i?"L":"M")+p.x.toFixed(1)+" "+p.y.toFixed(1)).join("")+'" fill="none" stroke="'+f.rc+'" stroke-width="1.8" stroke-linejoin="round"/>';
+    pts.forEach(p => s += '<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+(pts.length>40?1.5:2.3)+'" fill="'+f.rc+'"/>');
+  });
+  s += '</svg>';
+  return s;
+}
+
+function buildReport(){
+  const today = todayIso();
+  const from = reportRange > 0 ? addDays(today, -(reportRange-1)) : earliestDate();
+  const to = today;
+  const entriesIn = Object.values(db.entries).filter(e => e.d >= from && e.d <= to);
+  const daysLogged = new Set(entriesIn.map(e => e.d)).size;
+  const spanDays = daysBetween(from, to) + 1;
+
+  const back = statMetric(from, to, BACK_KEYS);
+  const leg  = statMetric(from, to, LEG_KEYS);
+  const men  = statMetric(from, to, ["al"]);
+  const phy  = statMetric(from, to, ["ll"]);
+
+  const medRec = entriesIn.filter(e => e.med === 0 || e.med === 1);
+  const medDays = new Set(medRec.filter(e => e.med === 1).map(e => e.d));
+  const medRecDays = new Set(medRec.map(e => e.d));
+  const medPct = medRecDays.size ? Math.round(medDays.size/medRecDays.size*100) : null;
+  const walkVals = entriesIn.filter(e => typeof e.walk === "number").map(e => e.walk);
+  const walkMean = walkVals.length ? walkVals.reduce((a,b) => a+b, 0)/walkVals.length : null;
+
+  const injsAll = eventsOf("inj");
+  const injs = reportRange > 0 ? injsAll.filter(e => e.d >= from && e.d <= to) : injsAll;
+  const fns = eventsOf("fn").filter(f => f.d >= from && f.d <= to);
+  const notesIn = entriesIn.filter(e => e.note).sort((a,b) => a.d < b.d ? 1 : a.d > b.d ? -1 : 0).slice(0, 18);
+
+  const genDate = new Date();
+  const gd = genDate.getDate()+". "+MON[genDate.getMonth()]+" "+genDate.getFullYear();
+
+  const stat = (label, m, unit) => {
+    if(!m) return '<div class="rep-stat"><div class="rs-l">'+label+'</div><div class="rs-v">–</div><div class="rs-s">engin gögn</div></div>';
+    return '<div class="rep-stat"><div class="rs-l">'+label+'</div><div class="rs-v">'+fmtNum(m.mean)+(unit||"")+'</div>'+
+      '<div class="rs-s">lægst '+fmtNum(m.min)+' · hæst '+fmtNum(m.max)+'</div></div>';
+  };
+
+  let h = '';
+  h += '<div class="rep-h1">Verkjadagbók — samantekt fyrir lækni</div>';
+  h += '<div class="rep-meta">'+
+    'Nafn: <span class="rep-fill">&nbsp;</span>&nbsp;&nbsp; Kennitala: <span class="rep-fill">&nbsp;</span><br>'+
+    'Tímabil: <b>'+fmtLong(from)+'</b> – <b>'+fmtLong(to)+'</b> ('+spanDays+' dagar)<br>'+
+    'Skráningar: '+entriesIn.length+' á '+daysLogged+' dögum'+
+    ' · Útbúið '+gd+'</div>';
+
+  // injections (table scoped to the selected period)
+  h += '<div class="rep-sec">Sprautur (utanbastssprautur, ESI)</div>';
+  if(injs.length){
+    h += '<table class="rep-table"><thead><tr><th>Dagsetning</th><th>Staður</th><th class="num">Vikur síðan</th><th class="num">Svörun bak</th><th class="num">Svörun fótur</th></tr></thead><tbody>';
+    injs.forEach(inj => {
+      const r = injResponse(inj.d);
+      h += '<tr><td>'+fmtShort(inj.d)+'</td><td>'+(inj.site?escHtml(inj.site):"—")+'</td>'+
+        '<td class="num">'+Math.round(daysBetween(inj.d, today)/7)+'</td>'+
+        '<td class="num">'+(r.back.pct!=null?fmtPct(r.back.pct):"–")+'</td>'+
+        '<td class="num">'+(r.leg.pct!=null?fmtPct(r.leg.pct):"–")+'</td></tr>';
+    });
+    h += '</tbody></table>';
+  } else h += '<div class="rep-meta">Engin sprauta skráð á völdu tímabili.</div>';
+  // last injection / next due always reflects the true most recent injection
+  if(injsAll.length){
+    const last = injsAll[0];
+    const dueIso = addDays(last.d, INJECTION_INTERVAL_DAYS);
+    h += '<div class="rep-meta" style="margin-top:8px">Síðasta sprauta '+fmtLong(last.d)+'. Næsta áætluð (á '+Math.round(INJECTION_INTERVAL_DAYS/7)+' vikna fresti): <b>'+fmtLong(dueIso)+'</b>.<br>'+
+      'Svörun = breyting á meðalverk 2 vikur fyrir vs. dagar 3–21 eftir sprautu (neikvætt = minni verkur).</div>';
+  }
+
+  // pain summary + chart
+  h += '<div class="rep-sec">Verkir og líðan</div>';
+  h += '<div class="rep-grid">'+
+    stat("Mjóbak (meðaltal)", back)+
+    stat("Fótur / rót (meðaltal)", leg)+
+    stat("Andleg líðan", men)+
+    stat("Líkamleg líðan", phy)+
+    '</div>';
+  const rdata = seriesReport(from, to);
+  if(rdata.length){
+    const injMarks = injsAll.map(e => e.d);
+    h += '<div class="rep-legend"><span class="lg2"><span class="dot" style="background:#c0663a"></span>Mjóbak</span>'+
+      '<span class="lg2"><span class="dot" style="background:#2a78d6"></span>Fótur</span>'+
+      '<span class="lg2"><span class="dot" style="background:#b4552d"></span>Sprauta</span></div>';
+    h += '<div class="rep-chart">'+reportChartSvg(
+      [{k:"back",rc:"#c0663a"},{k:"leg",rc:"#2a78d6"}], rdata, from, to, injMarks)+'</div>';
+  }
+
+  // function / ODI
+  h += '<div class="rep-sec">Færnimat (ODI-kvarði, 0–100%)</div>';
+  if(fns.length){
+    h += '<table class="rep-table"><thead><tr><th>Dagsetning</th><th class="num">Skerðing</th></tr></thead><tbody>';
+    fns.forEach(fn => {
+      const i = (typeof fn.index === "number") ? fn.index : fnIndex(fn.scores || {});
+      h += '<tr><td>'+fmtShort(fn.d)+'</td><td class="num">'+i+'%</td></tr>';
+    });
+    h += '</tbody></table>';
+  } else h += '<div class="rep-meta">Ekkert færnimat skráð á tímabilinu.</div>';
+
+  // meds & activity
+  h += '<div class="rep-sec">Verkjalyf og hreyfing</div>';
+  h += '<div class="rep-grid">';
+  h += '<div class="rep-stat"><div class="rs-l">Dagar með verkjalyf</div><div class="rs-v">'+(medPct!=null?medPct+"%":"–")+'</div>'+
+    '<div class="rs-s">'+(medRecDays.size?medDays.size+" af "+medRecDays.size+" skráðum dögum":"ekki skráð")+'</div></div>';
+  h += '<div class="rep-stat"><div class="rs-l">Göngugeta (meðaltal)</div><div class="rs-v">'+(walkMean!=null?fmtNum(walkMean):"–")+'</div>'+
+    '<div class="rs-s">'+(walkVals.length?walkVals.length+" skráningar":"ekki skráð")+'</div></div>';
+  h += '</div>';
+
+  // notes
+  if(notesIn.length){
+    h += '<div class="rep-sec">Athugasemdir</div><div class="rep-notes">';
+    notesIn.forEach(e => {
+      h += '<div class="rn"><b>'+fmtShort(e.d)+' '+(e.p==="m"?"(morgunn)":"(kvöld)")+':</b> '+escHtml(e.note)+'</div>';
+    });
+    h += '</div>';
+  }
+
+  h += '<div class="rep-foot">Þessi samantekt er sjálfvirkt útbúin úr Verkjadagbók (sjálfsmat sjúklings). '+
+    'Verkir og líðan á kvarðanum 0–10. Ekki læknisfræðileg greining.</div>';
+
+  document.getElementById("reportBody").innerHTML = h;
+  const rv = document.getElementById("reportView");
+  rv.classList.add("show");
+  document.documentElement.classList.add("report-open");
+  rv.scrollTop = 0;
+}
 
 /* ================= toast ================= */
 let toastT;
